@@ -5,13 +5,45 @@
     // http://cdn.anychart.com/csv-data/orcl-intraday.js
     var orcl_intraday_data = get_orcl_intraday_data();
     var text_doc = document.documentElement.innerHTML;
+    var date_time_pattern = [
+        "MMMM dd",
+        "MMMM yyyy",
+        "EEEE MMMM dd yyyy",
+        "dddd MMMM dd yyyy h:mm:ss tt",
+        "Q",
+        "M",
+        "L",
+        "d",
+        "h",
+        "H",
+        "E",
+        "c",
+        "w",
+        "k",
+        "K",
+        "z",
+        "Z",
+        "v",
+        "V",
+        "yyyy.MM.dd G 'at' HH:mm:ss z",
+        "EEE, MMM d, ''yy",
+        "h:mm a",
+        "hh 'o''clock' a, zzzz",
+        "K:mm a, z",
+        "yyyyy.MMMMM.dd GGG hh:mm aaa",
+        "EEE, d MMM yyyy HH:mm:ss Z",
+        "yyMMddHHmmssZ",
+        "yyyy-MM-dd'T'HH:mm:ss.SSSZ",
+        "yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
+        "YYYY-'W'ww-u"
+    ];
 
     function hidePreloader() {
         $('#loader-wrapper').fadeOut('slow');
     }
 
     function activeEl(el) {
-        $(el).closest('.table-language').find('td').removeClass('active');
+        $(el).closest('table').find('td').removeClass('active');
         $(el).addClass('active');
     }
 
@@ -20,7 +52,7 @@
             url: 'http://cdn.anychart.com/locale/1.1.0/index.json',
             success: function (json) {
                 var data = json;
-                var $table = $('.table-language').find('tbody');
+                var $table = $('.language-locale').find('tbody');
                 var locale;
 
                 for (var i = 0; i < data['anychart-locales'].locales.length; i++) {
@@ -33,9 +65,21 @@
                     )
                 }
 
-                askEvent();
+                askEventLanguageLocale();
             }
         });
+    }
+
+    function getDateTimePattern() {
+        var $table = $('.date-pattern').find('tbody');
+
+        for (var i = 0; i < date_time_pattern.length; i++) {
+            $table.append(
+                '<tr>' + '<td>' + date_time_pattern[i] + '</td>' + '</tr>'
+            );
+        }
+
+        askEventDatePattern();
     }
 
     function loadScript(url, callback, code) {
@@ -80,6 +124,13 @@
         Prism.highlightElement($lang_mark[0]);
     }
 
+    function disposeChart() {
+        if (chart) {
+            chart.dispose();
+            chart = null;
+        }
+    }
+
     function changeLocale(code) {
 
         if (typeof code === 'string') {
@@ -90,30 +141,45 @@
 
         function reDrawChart() {
             if (window['anychart']['format']['locales'][code] != undefined) {
+                var format = $('.date-pattern').find('td.active').text();
                 clearInterval(timerId);
-
-                if (chart) {
-                    chart.dispose();
-                    chart = null;
-                }
-
-                createDailyChart(orcl_intraday_data, 'intraday-chart', code);
+                disposeChart();
+                createDailyChart(orcl_intraday_data, 'intraday-chart', code, format);
             }
         }
     }
 
-    function askEvent() {
-        $('.table-language').find('td').on('click', function () {
-            var that = $(this);
-            var url = that.attr('data-locale-src');
-            var code = that.attr('data-code');
+    function changeDatePattern(format) {
+        var locale = anychart.format.outputLocale();
+        disposeChart();
+        createDailyChart(orcl_intraday_data, 'intraday-chart', locale, format);
+    }
+
+    function askEventLanguageLocale() {
+        $('.language-locale').find('td').on('click', function () {
+            var $that = $(this);
+            var url = $that.attr('data-locale-src');
+            var code = $that.attr('data-code');
 
             loadScript(url, changeLocale, code);
-            activeEl(that);
+            activeEl($that);
         }).first().trigger('click');
     }
 
-    function createDailyChart(data, container, locale) {
+    function askEventDatePattern() {
+        $('.date-pattern').find('td').on('click', function () {
+            var $that = $(this);
+
+            activeEl($that);
+            changeDatePattern($that.text());
+        });
+    }
+
+    function createDailyChart(data, container, locale, format) {
+        var date_format = 'EEEE, dd MMMM yyyy - hh:mm';
+        if (format) {
+            date_format = format;
+        }
         // Set a localization for output.
         anychart.format.outputLocale(locale);
         // create data table on loaded data
@@ -127,6 +193,7 @@
         // create stock chart
         chart = anychart.stock();
         chart.title().enabled(true).text('ORCL Intraday data');
+        chart.padding().left('70px');
 
         // create value plot on the chart
         var valuePlot = chart.plot(0);
@@ -134,10 +201,13 @@
         valuePlot.grid().enabled(true);
         valuePlot.minorGrid().enabled(true);
         valuePlot.legend().titleFormatter(function () {
-            return anychart.format.dateTime(this.value, 'EEEE, dd MMMM yyyy - HH:MM', null, locale);
+            return anychart.format.dateTime(this.value, date_format, null, locale);
+        });
+        valuePlot.legend().itemsTextFormatter(function () {
+            return anychart.format.number(this.value, locale);
         });
         valuePlot.yAxis().labels().textFormatter(function () {
-
+            return anychart.format.number(this.value, locale);
         });
 
         // create volume plot on the chart
@@ -145,14 +215,17 @@
         volumePlot.column(volumeMapping).name("Volume");
         volumePlot.height('30%');
         volumePlot.legend().titleFormatter(function () {
-            return anychart.format.dateTime(this.value, 'EEEE, dd MMMM yyyy - HH:MM', null, locale);
+            return anychart.format.dateTime(this.value, date_format, null, locale);
+        });
+        volumePlot.legend().itemsTextFormatter(function () {
+            return anychart.format.number(this.value, locale);
         });
         volumePlot.yAxis().labels().textFormatter(function () {
-
+            return anychart.format.number(this.value, locale);
         });
 
         chart.tooltip().titleFormatter(function () {
-            return anychart.format.dateTime(this.hoveredDate, 'dd/MM/yy - HH:MM', null, locale);
+            return anychart.format.dateTime(this.hoveredDate, 'dd/MM/yy - hh:mm', null, locale);
         });
 
         chart.tooltip().textFormatter(function () {
@@ -190,11 +263,12 @@
             $(this).tab('show');
         });
 
+        getDateTimePattern();
         getLocaleText();
     });
 
     $(window).on('load', function () {
-        hidePreloader();
+        //  hidePreloader();
     });
 
 })();

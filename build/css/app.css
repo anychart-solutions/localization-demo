@@ -268,12 +268,12 @@ h1.title {
 .chart-container .tab-pane p {
   padding-top: 15px; }
 
-.table-language {
+.language-locale {
   height: 298px; }
-  .table-language td {
+  .language-locale td {
     -webkit-transition: all .2s;
     transition: all .2s; }
-  .table-language .active {
+  .language-locale .active {
     background: #d1eaff !important;
     color: #2485d0; }
 
