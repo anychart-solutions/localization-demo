@@ -5,9 +5,8 @@
     // http://cdn.anychart.com/csv-data/orcl-intraday.js
     var orcl_intraday_data = get_orcl_intraday_data();
     var text_doc = document.documentElement.innerHTML;
-    var date_time_pattern = [
-        "MMMM dd"
-    ];
+    var array_url = [];
+    formats = {};
 
     function hidePreloader() {
         $('#loader-wrapper').fadeOut('slow');
@@ -41,12 +40,19 @@
         });
     }
 
-    function getDateTimePattern() {
-        var $table = $('.date-pattern').find('tbody');
+    function getDateTimePattern(code) {
+        var url = 'http://cdn.anychart.com/locale/1.1.0/formats/' + code + '.js';
 
-        for (var i = 0; i < date_time_pattern.length; i++) {
+        loadScript(url, changePattern, code);
+    }
+
+    function changePattern(code) {
+        var $table = $('.date-pattern').find('tbody');
+        $table.empty();
+
+        for (var i = 0; i < formats[code].length; i++) {
             $table.append(
-                '<tr>' + '<td>' + date_time_pattern[i] + '</td>' + '</tr>'
+                '<tr>' + '<td>' + formats[code][i] + '</td>' + '</tr>'
             );
         }
 
@@ -57,40 +63,76 @@
         var body = $('body')[0];
         var script = document.createElement('script');
         var el = 'script[src="' + url + '"]';
+        array_url.unshift(url);
         script.src = url;
-
-        script.onload = callback(code);
 
         if ($(el).length == 0) {
             body.appendChild(script);
         }
 
+        if (callback.name === 'changeLocale') {
+            script.onload = callback(code);
+        } else if (callback.name === 'changePattern') {
+            var done = false;
+            script.onload = script.onreadystatechange = function () {
+                if (!done && (!this.readyState ||
+                    this.readyState === "loaded" || this.readyState === "complete")) {
+                    done = true;
+
+                    callback(code);
+                    displayFormatArray(url, code);
+                    displayFullSource(array_url);
+                }
+            };
+        }
+
         displayLocaleJSON(url);
-        displayFullSource(url);
     }
 
     function displayLocaleJSON(url) {
-        $.ajax({
-            url: url,
-            success: function (source) {
-                var code = JSON.stringify(eval(source), null, '\t');
-                var $lang_json = $('.language-json');
+        if (url.indexOf('formats') === -1) {
+            $.ajax({
+                url: url,
+                success: function (source) {
+                    var code = JSON.stringify(eval(source), null, '\t');
+                    var $lang_json = $('#locale-json').find('.language-json');
 
-                $lang_json.text(code);
-                Prism.highlightElement($lang_json[0]);
-            }
-        });
+                    $lang_json.text(code);
+                    Prism.highlightElement($lang_json[0]);
+                }
+            });
+        }
+    }
+
+    function displayFormatArray(url, code) {
+        if (url.indexOf('formats') !== -1) {
+            var $lang_js = $('#format-array').find('.language-javascript');
+            var text = 'var formats[\'' + code + '\'] = ';
+            var formats_text = formats[code].map(function (value, index) {
+                if (index == 0) {
+                    return '"' + value + '"'
+                }
+                return '\t\t\t\t\t"' + value + '"'
+            });
+
+            $lang_js.text(text + '[' + formats_text.join(',\n') + ']');
+            Prism.highlightElement($lang_js[0]);
+        }
     }
 
     function displayFullSource(url) {
         var $lang_mark = $('.language-markup');
         var new_text_doc = text_doc.substr(0, text_doc.indexOf('</body>'));
 
-        if (new_text_doc.indexOf(url) == -1) {
-            new_text_doc += '\n';
-            new_text_doc += '<script src="' + url + '">' + '</script>' + '\n</body>';
+        for (var i = 0; i < array_url.length; i++) {
+            if (new_text_doc.indexOf(url[i]) == -1) {
+                new_text_doc += '\n';
+                new_text_doc += '<script src="' + url[i] + '">' + '</script>';
+            }
         }
 
+        new_text_doc += '\n</body>';
+        array_url = [];
         $lang_mark.text(new_text_doc);
         Prism.highlightElement($lang_mark[0]);
     }
@@ -112,7 +154,7 @@
         function reDrawChart() {
             if (window['anychart']['format']['locales'][code] != undefined) {
                 var format = $('.date-pattern').find('td.active').text();
-                
+
                 clearInterval(timerId);
                 disposeChart();
                 createDailyChart(orcl_intraday_data, 'intraday-chart', code, format);
@@ -122,7 +164,7 @@
 
     function changeDatePattern(format) {
         var locale = anychart.format.outputLocale();
-        
+
         disposeChart();
         createDailyChart(orcl_intraday_data, 'intraday-chart', locale, format);
     }
@@ -134,6 +176,7 @@
             var code = $that.attr('data-code');
 
             loadScript(url, changeLocale, code);
+            getDateTimePattern(code);
             activeEl($that);
         }).first().trigger('click');
     }
@@ -149,7 +192,7 @@
 
     function createDailyChart(data, container, locale, format) {
         var date_format = 'EEEE, dd MMMM yyyy - hh:mm';
-        
+
         if (format) {
             date_format = format;
         }
@@ -236,7 +279,6 @@
             $(this).tab('show');
         });
 
-        getDateTimePattern();
         getLocaleText();
     });
 
