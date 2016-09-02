@@ -268,12 +268,15 @@ h1.title {
 .chart-container .tab-pane p {
   padding-top: 15px; }
 
-.language-locale {
+.language-locale,
+.date-pattern {
   height: 298px; }
-  .language-locale td {
+  .language-locale td,
+  .date-pattern td {
     -webkit-transition: all .2s;
     transition: all .2s; }
-  .language-locale .active {
+  .language-locale .active,
+  .date-pattern .active {
     background: #d1eaff !important;
     color: #2485d0; }
 
@@ -294,3 +297,11 @@ h1.title {
   border-left: 1px solid #cccccc !important;
   box-shadow: none !important;
   overflow: scroll; }
+
+@media screen and (max-width: 768px) {
+  .table-responsive {
+    overflow: scroll !important; } }
+
+@media screen and (min-width: 768px) {
+  .preview-container {
+    margin-bottom: 25px; } }

@@ -6,36 +6,7 @@
     var orcl_intraday_data = get_orcl_intraday_data();
     var text_doc = document.documentElement.innerHTML;
     var date_time_pattern = [
-        "MMMM dd",
-        "MMMM yyyy",
-        "EEEE MMMM dd yyyy",
-        "dddd MMMM dd yyyy h:mm:ss tt",
-        "Q",
-        "M",
-        "L",
-        "d",
-        "h",
-        "H",
-        "E",
-        "c",
-        "w",
-        "k",
-        "K",
-        "z",
-        "Z",
-        "v",
-        "V",
-        "yyyy.MM.dd G 'at' HH:mm:ss z",
-        "EEE, MMM d, ''yy",
-        "h:mm a",
-        "hh 'o''clock' a, zzzz",
-        "K:mm a, z",
-        "yyyyy.MMMMM.dd GGG hh:mm aaa",
-        "EEE, d MMM yyyy HH:mm:ss Z",
-        "yyMMddHHmmssZ",
-        "yyyy-MM-dd'T'HH:mm:ss.SSSZ",
-        "yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
-        "YYYY-'W'ww-u"
+        "MMMM dd"
     ];
 
     function hidePreloader() {
@@ -116,7 +87,7 @@
         var new_text_doc = text_doc.substr(0, text_doc.indexOf('</body>'));
 
         if (new_text_doc.indexOf(url) == -1) {
-            new_text_doc += '\n\n';
+            new_text_doc += '\n';
             new_text_doc += '<script src="' + url + '">' + '</script>' + '\n</body>';
         }
 
@@ -141,6 +112,7 @@
         function reDrawChart() {
             if (window['anychart']['format']['locales'][code] != undefined) {
                 var format = $('.date-pattern').find('td.active').text();
+                
                 clearInterval(timerId);
                 disposeChart();
                 createDailyChart(orcl_intraday_data, 'intraday-chart', code, format);
@@ -150,6 +122,7 @@
 
     function changeDatePattern(format) {
         var locale = anychart.format.outputLocale();
+        
         disposeChart();
         createDailyChart(orcl_intraday_data, 'intraday-chart', locale, format);
     }
@@ -176,6 +149,7 @@
 
     function createDailyChart(data, container, locale, format) {
         var date_format = 'EEEE, dd MMMM yyyy - hh:mm';
+        
         if (format) {
             date_format = format;
         }
@@ -262,12 +236,26 @@
             $(this).tab('show');
         });
 
-        getLocaleText();
         getDateTimePattern();
+        getLocaleText();
     });
 
     $(window).on('load', function () {
-        //  hidePreloader();
+        placeBlocks();
+        hidePreloader();
     });
 
+    $(window).on('resize', function () {
+        placeBlocks();
+    });
+
+    function placeBlocks() {
+        var mq = window.matchMedia('(max-width: 768px)');
+
+        if (mq.matches) {
+            $('.preview-container').detach().insertAfter('.tables-container');
+        } else {
+            $('.tables-container').detach().insertAfter('.preview-container');
+        }
+    }
 })();
