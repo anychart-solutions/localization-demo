@@ -1,0 +1,70 @@
+.navbar-brand {
+  position: relative;
+  float: left;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 16px;
+  color: #d5edff;
+  height: 30px;
+  padding: 2px 0 0 0;
+
+  & > img {
+    height: 28px;
+    width: 117px;
+  }
+
+  .chart-row {
+    position: absolute;
+    bottom: 4px;
+    left: 4px;
+    letter-spacing: -3px;
+    line-height: 0;
+    font-size: 0;
+    white-space: nowrap;
+
+    .chart-col {
+      display: inline-block;
+      width: 5px;
+      height: 18px;
+      background: #000;
+      margin: 0 1px;
+      vertical-align: bottom;
+      -webkit-transition: height 0.2s cubic-bezier(0.65, 0.4, 0.29, 1.01);
+      -moz-transition: height 0.2s cubic-bezier(0.65, 0.4, 0.29, 1.01);
+      -ms-transition: height 0.2s cubic-bezier(0.65, 0.4, 0.29, 1.01);
+      -o-transition: height 0.2s cubic-bezier(0.65, 0.4, 0.29, 1.01);
+      transition: height 0.2s cubic-bezier(0.65, 0.4, 0.29, 1.01);
+    }
+
+    .chart-col.green {
+      background: #26a957;
+      height: 8px;
+    }
+
+    .chart-col.orange {
+      background: #ff8207;;
+      height: 13px;
+    }
+
+    .chart-col.red {
+      background: #f0402e;
+      height: 18px;
+    }
+  }
+
+  &:hover .chart-row {
+    .chart-col.green {
+      height: 16px;
+    }
+
+    .chart-col.orange {
+      height: 5px;
+    }
+
+    .chart-col.red {
+      height: 10px;
+    }
+  }
+
+}
+
+
