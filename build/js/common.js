@@ -41,7 +41,7 @@
     }
 
     function getDateTimePattern(code) {
-        var url = 'http://cdn.anychart.com/locale/1.1.0/formats/' + code + '.js';
+        var url = 'formats/' + code + '.js';
 
         loadScript(url, changePattern, code);
     }
@@ -107,7 +107,7 @@
     function displayFormatArray(url, code) {
         if (url.indexOf('formats') !== -1) {
             var $lang_js = $('#format-array').find('.language-javascript');
-            var text = 'var formats[\'' + code + '\'] = ';
+            var text = 'var formats = {};\n' + 'formats' + '[\'' + code + '\'] = ';
             var formats_text = formats[code].map(function (value, index) {
                 if (index == 0) {
                     return '"' + value + '"'
