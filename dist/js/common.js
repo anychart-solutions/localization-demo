@@ -6,6 +6,7 @@
     var orcl_intraday_data = get_orcl_intraday_data();
     var text_doc = document.documentElement.innerHTML;
     var array_url = [];
+    var chart_container = 'intraday-chart';
     formats = {};
 
     function hidePreloader() {
@@ -157,7 +158,7 @@
 
                 clearInterval(timerId);
                 disposeChart();
-                createDailyChart(orcl_intraday_data, 'intraday-chart', code, format);
+                createDailyChart(orcl_intraday_data, chart_container, code, format);
             }
         }
     }
@@ -166,7 +167,7 @@
         var locale = anychart.format.outputLocale();
 
         disposeChart();
-        createDailyChart(orcl_intraday_data, 'intraday-chart', locale, format);
+        createDailyChart(orcl_intraday_data, chart_container, locale, format);
     }
 
     function askEventLanguageLocale() {
@@ -208,8 +209,8 @@
 
         // create stock chart
         chart = anychart.stock();
-        chart.title().enabled(true).text('ORCL Intraday data');
         chart.padding().left('70px');
+        chart.padding().top('20px');
 
         // create value plot on the chart
         var valuePlot = chart.plot(0);
