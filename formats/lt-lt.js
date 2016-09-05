@@ -1,0 +1,21 @@
+formats["lt-lt"] = [
+  'HH:mm:ss zzzz',
+  'MMMM d \'d.\'',
+  'HH:mm:ss z',
+  'HH:mm:ss',
+  'HH:mm',
+  'yyyy\'-\'MM\'-\'dd\'T\'HH\':\'mm\':\'ss',
+  'yyyy \'m.\' MMMM d \'d.\' HH:mm:ss',
+  'yyyy \'m.\' MMMM d \'d.\' HH:mm',
+  'y \'m\'. MMMM d \'d\'., EEEE',
+  'yyyy \'m.\' MMMM d \'d.\'',
+  'y \'m\'. MMMM d \'d\'.',
+  'yyyy-MM-dd HH:mm:ss',
+  'yyyy.MM.dd HH:mm:ss',
+  'yyyy \'m.\' MMMM',
+  'yyyy-MM-dd HH:mm',
+  'yyyy.MM.dd HH:mm',
+  'yyyy-MM-dd',
+  'yyyy.MM.dd',
+  'y-MM-dd'
+];
