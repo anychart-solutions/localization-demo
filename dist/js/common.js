@@ -158,7 +158,7 @@
 
                 clearInterval(timerId);
                 disposeChart();
-                createDailyChart(orcl_intraday_data, chart_container, code, format);
+                createChart(orcl_intraday_data, chart_container, code, format);
             }
         }
     }
@@ -167,7 +167,7 @@
         var locale = anychart.format.outputLocale();
 
         disposeChart();
-        createDailyChart(orcl_intraday_data, chart_container, locale, format);
+        createChart(orcl_intraday_data, chart_container, locale, format);
     }
 
     function askEventLanguageLocale() {
@@ -191,7 +191,7 @@
         });
     }
 
-    function createDailyChart(data, container, locale, format) {
+    function createChart(data, container, locale, format) {
         var date_format = 'EEEE, dd MMMM yyyy - hh:mm';
 
         if (format) {
