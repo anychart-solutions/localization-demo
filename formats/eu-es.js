@@ -1,7 +1,7 @@
 formats["eu-es"] = [
-  'dddd, yyyy.\'eko\' MMMM\'k \'d HH:mm:ss',
-  'dddd, yyyy.\'eko\' MMMM\'k \'d HH:mm',
-  'dddd, yyyy.\'eko\' MMMM\'k \'d',
+  'EEEE, yyyy.\'eko\' MMMM\'k \'d HH:mm:ss',
+  'EEEE, yyyy.\'eko\' MMMM\'k \'d HH:mm',
+  'EEEE, yyyy.\'eko\' MMMM\'k \'d',
   'HH:mm:ss (zzzz)',
   'HH:mm:ss (z)',
   'HH:mm:ss',

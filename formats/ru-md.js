@@ -1,8 +1,8 @@
 formats["ru-md"] = [
-  'dddd, d MMMM yyyy \'г\'. H:mm:ss',
+  'EEEE, d MMMM yyyy \'г\'. H:mm:ss',
   'd MMMM yyyy \'г\'. H:mm:ss',
   'd MMM yyyy \'г\'. H:mm:ss',
-  'dddd, d MMMM yyyy \'г\'.',
+  'EEEE, d MMMM yyyy \'г\'.',
   'EEEE, d MMMM y \'г\'.',
   'd MMMM yyyy \'г\'.',
   'dd.MM.yyyy H:mm:ss',

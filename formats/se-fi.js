@@ -1,7 +1,7 @@
 formats["se-fi"] = [
-  'dddd\', \'MMMM d\'. b. \'yyyy HH:mm:ss',
-  'dddd\', \'MMMM d\'. b. \'yyyy H:mm:ss',
-  'dddd\', \'MMMM d\'. b. \'yyyy',
+  'EEEE\', \'MMMM d\'. b. \'yyyy HH:mm:ss',
+  'EEEE\', \'MMMM d\'. b. \'yyyy H:mm:ss',
+  'EEEE\', \'MMMM d\'. b. \'yyyy',
   'MMMM d\'. b. \'yyyy HH:mm:ss',
   'MMMM d\'. b. \'yyyy H:mm:ss',
   'MMMM d\'. b. \'yyyy',

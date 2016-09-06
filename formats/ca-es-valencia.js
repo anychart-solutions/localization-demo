@@ -1,9 +1,9 @@
 formats["ca-es-valencia"] = [
-  'dddd, d MMMM \'de\' yyyy HH:mm:ss',
-  'dddd, d MMMM \'de\' yyyy H:mm:ss',
+  'EEEE, d MMMM \'de\' yyyy HH:mm:ss',
+  'EEEE, d MMMM \'de\' yyyy H:mm:ss',
   'd MMMM \'de\' yyyy HH:mm:ss',
   'd MMMM \'de\' yyyy H:mm:ss',
-  'dddd, d MMMM \'de\' yyyy',
+  'EEEE, d MMMM \'de\' yyyy',
   'EEEE, d MMMM \'de\' y',
   'd MMM yyyy HH:mm:ss',
   'd MMM yyyy H:mm:ss',

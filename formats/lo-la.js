@@ -1,10 +1,10 @@
 formats["lo-la"] = [
   'H ໂມງ m ນາທີ ss ວິນາທີ zzzz',
   'H ໂມງ m ນາທີ ss ວິນາທີ z',
-  'dddd ທີ d MMMM G yyyy HH:mm:ss',
-  'dddd ທີ d MMMM G yyyy H:mm:ss',
+  'EEEE ທີ d MMMM G yyyy HH:mm:ss',
+  'EEEE ທີ d MMMM G yyyy H:mm:ss',
   'EEEE ທີ d MMMM G y',
-  'dddd ທີ d MMMM G yyyy',
+  'EEEE ທີ d MMMM G yyyy',
   'd MMMM yyyy HH:mm:ss',
   'd MMM yyyy HH:mm:ss',
   'd MMMM yyyy H:mm:ss',

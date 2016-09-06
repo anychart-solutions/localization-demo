@@ -1,7 +1,7 @@
 formats["mt-mt"] = [
-  'dddd, d \'ta\'’ MMMM yyyy HH:mm:ss',
+  'EEEE, d \'ta\'’ MMMM yyyy HH:mm:ss',
   'd \'ta\'’ MMMM yyyy HH:mm:ss',
-  'dddd, d \'ta\'’ MMMM yyyy',
+  'EEEE, d \'ta\'’ MMMM yyyy',
   'EEEE, d \'ta\'’ MMMM y',
   'dd MMM yyyy HH:mm:ss',
   'd \'ta\'’ MMMM yyyy',

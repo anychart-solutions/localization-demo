@@ -1,6 +1,6 @@
 formats["rm-ch"] = [
-  'dddd, \'ils\' d \'da\' MMMM yyyy HH:mm:ss',
-  'dddd, \'ils\' d \'da\' MMMM yyyy',
+  'EEEE, \'ils\' d \'da\' MMMM yyyy HH:mm:ss',
+  'EEEE, \'ils\' d \'da\' MMMM yyyy',
   'EEEE, \'ils\' d \'da\' MMMM y',
   'd \'da\' MMMM yyyy HH:mm:ss',
   'dd-MM-yyyy HH:mm:ss',
