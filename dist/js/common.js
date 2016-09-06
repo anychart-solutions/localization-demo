@@ -7,6 +7,7 @@
     var text_doc = document.documentElement.innerHTML;
     var array_url = [];
     var chart_container = 'intraday-chart';
+    var $date_pattern = $('.date-pattern');
     formats = {};
 
     function hidePreloader() {
@@ -48,7 +49,7 @@
     }
 
     function changePattern(code) {
-        var $table = $('.date-pattern').find('tbody');
+        var $table = $date_pattern.find('tbody');
         $table.empty();
 
         for (var i = 0; i < formats[code].length; i++) {
@@ -154,7 +155,7 @@
 
         function reDrawChart() {
             if (window['anychart']['format']['locales'][code] != undefined) {
-                var format = $('.date-pattern').find('td.active').text();
+                var format = $date_pattern.find('td.active').text();
 
                 clearInterval(timerId);
                 disposeChart();
@@ -184,7 +185,7 @@
     }
 
     function askEventDatePattern() {
-        $('.date-pattern').find('td').on('click', function () {
+        $date_pattern.find('td').on('click', function () {
             var $that = $(this);
 
             activeEl($that);
