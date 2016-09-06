@@ -1,9 +1,9 @@
 formats["yi-001"] = [
-  'dddd, dטן MMMM yyyy HH:mm:ss',
+  'EEEE, dטן MMMM yyyy HH:mm:ss',
   'dטן MMMM yyyy HH:mm:ss',
   'dטן MMM yyyy HH:mm:ss',
+  'EEEE, dטן MMMM yyyy',
   'dd/MM/yyyy HH:mm:ss',
-  'dddd, dטן MMMM yyyy',
   'EEEE, dטן MMMM y',
   'HH:mm:ss zzzz',
   'dטן MMMM yyyy',

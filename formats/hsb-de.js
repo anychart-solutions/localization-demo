@@ -1,7 +1,7 @@
 formats["hsb-de"] = [
-  'dddd, d. MMMM yyyy H:mm:ss',
+  'EEEE, d. MMMM yyyy H:mm:ss',
   'd. MMMM yyyy H:mm:ss',
-  'dddd, d. MMMM yyyy',
+  'EEEE, d. MMMM yyyy',
   'd.M.yyyy H:mm:ss',
   'EEEE, d. MMMM y',
   'H:mm \'hodź\'.',

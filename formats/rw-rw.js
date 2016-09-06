@@ -1,6 +1,6 @@
 formats["rw-rw"] = [
-  'dddd, yyyy MMMM dd HH:mm:ss',
-  'dddd, yyyy MMMM dd',
+  'EEEE, yyyy MMMM dd HH:mm:ss',
+  'EEEE, yyyy MMMM dd',
   'EEEE, y MMMM dd',
   'HH:mm:ss zzzz',
   'HH:mm:ss z',

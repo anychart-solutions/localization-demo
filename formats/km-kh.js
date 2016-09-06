@@ -1,9 +1,9 @@
 formats["km-kh"] = [
+  'EEE d MMMM yyyy HH:mm:ss',
   '\'ខែ\' MM \'ឆ្នាំ\' yyyy',
-  'ddd d MMMM yyyy HH:mm:ss',
   'd MMMM yyyy HH:mm:ss',
   'dd/MM/yy HH:mm:ss',
-  'ddd d MMMM yyyy',
+  'EEE d MMMM yyyy',
   'h:mm:ss a zzzz',
   'EEEE d MMMM y',
   'd MMMM yyyy',

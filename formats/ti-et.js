@@ -1,8 +1,8 @@
 formats["ti-et"] = [
-  'dddd፣ dd MMMM መዓልቲ yyyy G h:mm:ss a',
-  'dddd፣ dd MMMM መዓልቲ yyyy G HH:mm:ss',
+  'EEEE፣ dd MMMM መዓልቲ yyyy G h:mm:ss a',
+  'EEEE፣ dd MMMM መዓልቲ yyyy G HH:mm:ss',
   'EEEE፣ dd MMMM መዓልቲ y G',
-  'dddd፣ dd MMMM መዓልቲ yyyy G',
+  'EEEE፣ dd MMMM መዓልቲ yyyy G',
   'dd MMMM yyyy h:mm:ss a',
   'dd MMMM yyyy HH:mm:ss',
   'dd-MMM-yyyy h:mm:ss a',

@@ -18,8 +18,8 @@ formats["as-in"] = [
   'h.mm. a',
   'd-M-y',
   'yyyy\'-\'MM\'-\'dd\'T\'HH\':\'mm\':\'ss',
-  'yyyy,MMMM dd, dddd a hh:mm:ss',
-  'yyyy,MMMM dd, dddd a h:mm:ss',
-  'yyyy,MMMM dd, dddd H:mm:ss',
-  'yyyy,MMMM dd, dddd'
+  'yyyy,MMMM dd, EEEE a hh:mm:ss',
+  'yyyy,MMMM dd, EEEE a h:mm:ss',
+  'yyyy,MMMM dd, EEEE H:mm:ss',
+  'yyyy,MMMM dd, EEEE'
 ];

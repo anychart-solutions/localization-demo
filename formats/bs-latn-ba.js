@@ -1,9 +1,9 @@
 formats["bs-latn-ba"] = [
-  'dddd, dd. MMMM yyyy. HH:mm:ss',
+  'EEEE, dd. MMMM yyyy. HH:mm:ss',
   'dd. MMM. yyyy. HH:mm:ss',
   'dd. MMMM yyyy. HH:mm:ss',
+  'EEEE, dd. MMMM yyyy.',
   'dd.MM.yyyy. HH:mm:ss',
-  'dddd, dd. MMMM yyyy.',
   'EEEE, dd. MMMM y.',
   'dd. MMM. yyyy.',
   'dd. MMMM yyyy.',
