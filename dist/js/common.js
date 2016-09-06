@@ -1,12 +1,8 @@
 (function () {
-    var chart;
-    var range = ['Mon Jun 29 2009 22:25:18', 'Thu Jul 02 2009 22:11:19'];
-    // The data that have been used for this sample can be taken from the CDN
-    // http://cdn.anychart.com/csv-data/orcl-intraday.js
-    var orcl_intraday_data = get_orcl_intraday_data();
+    var map;
     var text_doc = document.documentElement.innerHTML;
     var array_url = [];
-    var chart_container = 'intraday-chart';
+    var chart_container = 'map-chart';
     formats = {};
 
     function hidePreloader() {
@@ -139,9 +135,9 @@
     }
 
     function disposeChart() {
-        if (chart) {
-            chart.dispose();
-            chart = null;
+        if (map) {
+            map.dispose();
+            map = null;
         }
     }
 
@@ -158,16 +154,17 @@
 
                 clearInterval(timerId);
                 disposeChart();
-                createChart(orcl_intraday_data, chart_container, code, format);
+                createChart(chart_container, code, format);
             }
         }
     }
 
-    function changeDatePattern(format) {
+    function changeDatePattern(format, flag) {
         var locale = anychart.format.outputLocale();
 
         disposeChart();
-        createChart(orcl_intraday_data, chart_container, locale, format);
+        createChart(chart_container, locale, format);
+        changeInputFormat(format, flag);
     }
 
     function askEventLanguageLocale() {
@@ -187,11 +184,28 @@
             var $that = $(this);
 
             activeEl($that);
+            changeInputPattern($that.text());
             changeDatePattern($that.text());
         });
     }
 
-    function createChart(data, container, locale, format) {
+    function changeInputPattern(pattern) {
+        $('.format-pattern-input').val(pattern);
+    }
+
+    function changeInputFormat(format, flag) {
+        var locale = anychart.format.outputLocale();
+        var date = new Date();
+        var pattern = anychart.format.dateTime(date, format, -8 * 60, locale);
+
+        if (flag === undefined) {
+            $('.format-input').val(pattern);
+        } else {
+            $('#custom-example-format-input').val(pattern)
+        }
+    }
+
+    function createChart(container, locale, format) {
         var date_format = 'EEEE, dd MMMM yyyy - hh:mm';
 
         if (format) {
@@ -199,78 +213,152 @@
         }
         // Set a localization for output.
         anychart.format.outputLocale(locale);
-        // create data table on loaded data
-        var dataTable = anychart.data.table();
-        dataTable.addData(data);
+        anychart.format.outputDateTimeFormat(date_format);
 
-        // map loaded data
-        var closeMapping = dataTable.mapAs({'value': 4});
-        var volumeMapping = dataTable.mapAs({'value': 5, 'type': 'average'});
+        // create data set
+        var dataSet = anychart.data.set([
+            {
+                size: 8848,
+                name: "Everest",
+                label: {anchor: 'leftBottom', position: 'top'},
+                summiters: 'Edmund Hillary, Tenzing Norgay',
+                ascent: Date.UTC(1953, 5, 29),
+                lat: 27.986065,
+                long: 86.922623
+            },
+            {
+                size: 8586,
+                name: "Kangchenjunga",
+                label: {anchor: 'rightTop', position: 'bottom'},
+                summiters: 'George Band, Joe Brown',
+                ascent: Date.UTC(1955, 5, 25),
+                lat: 27.702491,
+                long: 88.147535
+            },
+            {
+                size: 8516,
+                name: "Lhotse",
+                label: {anchor: 'rightTop', position: 'left'},
+                summiters: 'Fritz Luchsinger, Ernst Reiss',
+                ascent: Date.UTC(1956, 5, 18),
+                lat: 27.962637,
+                long: 86.933615
+            },
+            {
+                size: 8485,
+                name: "Makalu",
+                label: {anchor: 'left', position: 'right'},
+                summiters: 'Jean Couzy, Lionel Terray',
+                ascent: Date.UTC(1956, 5, 15),
+                lat: 27.88931,
+                long: 87.08862
+            },
+            {
+                size: 8201,
+                name: "Cho Oyu",
+                summiters: 'Joseph Joechler, Pasang Dawa Lama,<br/>Herbert Tichy',
+                ascent: Date.UTC(1954, 10, 19),
+                lat: 28.094197,
+                long: 86.660708
+            },
+            {
+                size: 8167,
+                name: "Dhaulagiri",
+                summiters: 'Kurt Diemberger, Peter Diener,<br/>Nawang Dorje, Nima Dorje, Ernst Forrer, Albin Schelbert',
+                ascent: Date.UTC(1960, 5, 13),
+                lat: 28.69757,
+                long: 83.49241
+            },
+            {
+                size: 8163,
+                name: "Manaslu",
+                label: {anchor: 'left', position: 'right'},
+                summiters: 'Toshio Imanishi, Gyalzen Norbu',
+                ascent: Date.UTC(1956, 5, 9),
+                lat: 28.54997,
+                long: 84.559612
+            },
+            {
+                size: 8091,
+                name: "Annapurna",
+                label: {anchor: 'rightTop', position: 'left'},
+                height: 8091,
+                summiters: 'Maurice Herzog, Louis Lachenal',
+                ascent: Date.UTC(1960, 6, 3),
+                lat: 28.596629,
+                long: 83.819701
+            }
+        ]);
 
-        // create stock chart
-        chart = anychart.stock();
-        chart.padding().left('70px');
-        chart.padding().top('20px');
+        // define settings for maps regions (regions bounds are not relevant for this data,
+        // so let's make it less contrast)
+        var customTheme = {
+            "map": {
+                'unboundRegions': {'enabled': true, 'fill': '#E1E1E1', 'stroke': '#D2D2D2'}
+            }
+        };
+        anychart.theme(customTheme);
 
-        // create value plot on the chart
-        var valuePlot = chart.plot(0);
-        valuePlot.line(closeMapping).name("Close");
-        valuePlot.grid().enabled(true);
-        valuePlot.minorGrid().enabled(true);
-        valuePlot.legend().titleFormatter(function () {
-            return anychart.format.dateTime(this.value, date_format, null, locale);
+        // create map chart
+        map = anychart.map();
+        // set geodata using http://cdn.anychart.com/geodata/1.2.0/countries/nepal/nepal.js
+        map.geoData(anychart.maps['nepal']);
+
+        var title = map.title();
+        title.enabled(true);
+        title.useHtml(true);
+        title.text('Eight-thousanders of Nepal with first-ascent date.');
+        title.padding([20, 0, 0, 0]);
+
+        // set chart bubble settings
+        map.maxBubbleSize(7);
+        map.minBubbleSize(3);
+
+        //create bubble series
+        var series = map.bubble(dataSet);
+        series.fill('#1976d2 0.6');
+        series.stroke('1 #1976d2 0.9');
+        series.labels()
+            .enabled(true)
+            .anchor('right')
+            .position('left')
+            .offsetX(3)
+            .padding(0)
+            .fontColor('#212121')
+            .useHtml(true)
+            .textFormatter(function () {
+                return anychart.format.dateTime(this.getDataValue('ascent'));
+            });
+        series.hoverLabels().fontWeight('bold');
+        series.selectionMode("none");
+
+        // set series tooltip settings
+        series.tooltip({
+            background: {fill: 'white', stroke: '#c1c1c1', corners: 3, cornerType: 'ROUND'},
+            padding: [8, 13, 10, 13]
         });
-        valuePlot.legend().itemsTextFormatter(function () {
-            return anychart.format.number(this.value, locale);
+        series.tooltip().textWrap('byLetter').useHtml(true);
+        series.tooltip().title().fontColor('#7c868e').useHtml(true);
+
+        series.tooltip().titleFormatter(function () {
+            var span_for_value = ' (<span style="color: #545f69; font-size: 12px; font-weight: bold">';
+            return this.getDataValue('name') + span_for_value + this.getDataValue('size') + '</span>m</strong>)';
         });
-        valuePlot.yAxis().labels().textFormatter(function () {
-            return anychart.format.number(this.value, locale);
+        series.tooltip().fontColor('#7c868e').textFormatter(function () {
+            return 'First Ascent: <span style="color: #545f69; font-size: 12px">' +
+                anychart.format.dateTime(this.getDataValue('ascent')) + '</span></strong><br/>' +
+                'First Summiters: <span style="color: #545f69; font-size: 12px">' +
+                this.getDataValue('summiters') + '</span></strong>';
         });
 
-        // create volume plot on the chart
-        var volumePlot = chart.plot(1);
-        volumePlot.column(volumeMapping).name("Volume");
-        volumePlot.height('30%');
-        volumePlot.legend().titleFormatter(function () {
-            return anychart.format.dateTime(this.value, date_format, null, locale);
-        });
-        volumePlot.legend().itemsTextFormatter(function () {
-            return anychart.format.number(this.value, locale);
-        });
-        volumePlot.yAxis().labels().textFormatter(function () {
-            return anychart.format.number(this.value, locale);
-        });
-
-        chart.tooltip().titleFormatter(function () {
-            return anychart.format.dateTime(this.hoveredDate, 'dd/MM/yy - hh:mm', null, locale);
-        });
-
-        chart.tooltip().textFormatter(function () {
-            return 'Close: ' + anychart.format.number(eval(this.formattedValues[0]), locale) + '\n' +
-                'Volume: ' + anychart.format.number(eval(this.formattedValues[1]), locale);
-        });
-
-        // create scroller series with mapped data
-        chart.scroller().line(closeMapping);
-
-        if (typeof range[0] === 'string' && typeof range[1] === 'string') {
-            range[0] = new Date(range[0]).getTime();
-            range[1] = new Date(range[1]).getTime();
-        }
-
-        // Sets values for selected range.
-        chart.selectRange(range[0], range[1]);
+        //set series geo id field settings
+        series.geoIdField('code_hasc');
 
         // set container id for the chart
-        chart.container(container);
+        map.container(container);
 
         // initiate chart drawing
-        chart.draw();
-
-        chart.listen("selectedrangechange", function (value) {
-            range[0] = value.firstSelected;
-            range[1] = value.lastSelected;
-        });
+        map.draw();
     }
 
     anychart.onDocumentReady(function () {
@@ -278,6 +366,10 @@
         $('.tabs-control a').click(function (e) {
             e.preventDefault();
             $(this).tab('show');
+        });
+
+        $('#custom-format').find('.format-pattern-input').on('keyup', function () {
+            changeDatePattern($(this).val(), true);
         });
 
         getLocaleText();
