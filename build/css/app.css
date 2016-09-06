@@ -224,17 +224,28 @@ h1.title {
 .chart-container .tab-pane p {
   padding-top: 15px; }
 
-.language-locale,
 .date-pattern {
-  height: 298px; }
-  .language-locale td,
-  .date-pattern td {
-    -webkit-transition: all .2s;
-    transition: all .2s; }
-  .language-locale .active,
-  .date-pattern .active {
-    background: #d1eaff !important;
-    color: #2485d0; }
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 15px; }
+
+.language-locale td,
+.date-pattern td {
+  -webkit-transition: all .2s;
+  transition: all .2s; }
+  .language-locale td:first-child,
+  .date-pattern td:first-child {
+    border-top: none; }
+
+.language-locale .active,
+.date-pattern .active {
+  background: #d1eaff !important;
+  color: #2485d0; }
+
+.language-locale {
+  height: 237px; }
+
+.date-pattern {
+  height: 217px; }
 
 .tables-container .bs-callout {
   margin-bottom: 20px; }
@@ -244,8 +255,8 @@ h1.title {
   overflow-y: scroll;
   padding: 15px; }
 
-.dashboard-content .tab-pane {
-  height: 650px; }
+.dashboard-content .chart-container .tab-pane {
+  height: 698px; }
 
 .prism-window > pre {
   margin-top: -75px;
@@ -253,6 +264,14 @@ h1.title {
   border-left: 1px solid #cccccc !important;
   box-shadow: none !important;
   overflow: scroll; }
+
+.form-group label {
+  font-weight: 400; }
+
+.custom-format .form-group,
+.select-preset .form-group {
+  margin-top: 15px;
+  margin-bottom: 0; }
 
 @media screen and (max-width: 768px) {
   .table-responsive {

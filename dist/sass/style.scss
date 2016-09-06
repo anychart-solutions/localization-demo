@@ -80,18 +80,32 @@ h1.title {
   }
 }
 
+.date-pattern {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 15px;
+}
+
 .language-locale,
 .date-pattern {
-  height: 298px;
-
   td {
     transition: all .2s;
+    &:first-child {
+      border-top: none;
+    }
   }
 
   .active {
     background: #d1eaff !important;
     color: #2485d0;
   }
+}
+
+.language-locale {
+  height: 237px;
+}
+
+.date-pattern {
+  height: 217px;
 }
 
 .tables-container {
@@ -106,8 +120,8 @@ h1.title {
   padding: 15px;
 }
 
-.dashboard-content .tab-pane {
-  height: 650px;
+.dashboard-content .chart-container .tab-pane {
+  height: 698px;
 }
 
 .prism-window > pre {
@@ -116,6 +130,18 @@ h1.title {
   border-left: 1px solid #cccccc !important;
   box-shadow: none !important;
   overflow: scroll;
+}
+
+.form-group label {
+  font-weight: 400;
+}
+
+.custom-format,
+.select-preset {
+  .form-group {
+    margin-top: 15px;
+    margin-bottom: 0;
+  }
 }
 
 
