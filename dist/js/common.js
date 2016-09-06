@@ -160,11 +160,12 @@
         }
     }
 
-    function changeDatePattern(format) {
+    function changeDatePattern(format, flag) {
         var locale = anychart.format.outputLocale();
 
         disposeChart();
         createChart(data, chart_container, locale, format);
+        changeInputFormat(format, flag);
     }
 
     function askEventLanguageLocale() {
@@ -184,8 +185,25 @@
             var $that = $(this);
 
             activeEl($that);
+            changeInputPattern($that.text());
             changeDatePattern($that.text());
         });
+    }
+
+    function changeInputPattern(pattern) {
+        $('.format-pattern-input').val(pattern);
+    }
+
+    function changeInputFormat(format, flag) {
+        var locale = anychart.format.outputLocale();
+        var date = new Date();
+        var pattern = anychart.format.dateTime(date, format, -8 * 60, locale);
+
+        if (flag === undefined) {
+            $('.format-input').val(pattern);
+        } else {
+            $('#custom-example-format-input').val(pattern)
+        }
     }
 
     function createChart(data, container, locale, format) {
@@ -277,6 +295,10 @@
         $('.tabs-control a').click(function (e) {
             e.preventDefault();
             $(this).tab('show');
+        });
+
+        $('#custom-format').find('.format-pattern-input').on('keyup', function () {
+            changeDatePattern($(this).val(), true);
         });
 
         getLocaleText();
