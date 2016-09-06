@@ -1,10 +1,10 @@
 formats["tr-tr"] = [
-  'dd MMMM yyyy dddd HH:mm:ss',
-  'dd MMMM yyyy dddd HH:mm',
+  'dd MMMM yyyy EEEE HH:mm:ss',
+  'dd MMMM yyyy EEEE HH:mm',
   'dd MMMM yyyy HH:mm:ss',
   'dd.MM.yyyy HH:mm:ss',
   'dd MMMM yyyy HH:mm',
-  'dd MMMM yyyy dddd',
+  'dd MMMM yyyy EEEE',
   'dd.MM.yy HH:mm:ss',
   'dd.MM.yyyy HH:mm',
   'dd.MM.yy HH:mm',

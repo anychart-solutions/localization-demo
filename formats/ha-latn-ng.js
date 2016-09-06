@@ -1,8 +1,8 @@
 formats["ha-latn-ng"] = [
-  'dddd, d MMMM, yyyy HH:mm:ss',
+  'EEEE, d MMMM, yyyy HH:mm:ss',
   'd MMMM, yyyy HH:mm:ss',
   'd MMM, yyyy HH:mm:ss',
-  'dddd, d MMMM, yyyy',
+  'EEEE, d MMMM, yyyy',
   'd/M/yyyy HH:mm:ss',
   'EEEE, d MMMM, y',
   'HH:mm:ss zzzz',

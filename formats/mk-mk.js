@@ -1,8 +1,8 @@
 formats["mk-mk"] = [
-  'dddd, dd MMMM yyyy HH:mm:ss',
-  'dddd, dd MMMM yyyy HH:mm',
+  'EEEE, dd MMMM yyyy HH:mm:ss',
+  'EEEE, dd MMMM yyyy HH:mm',
   'dd.MM.yyyy HH:mm:ss',
-  'dddd, dd MMMM yyyy',
+  'EEEE, dd MMMM yyyy',
   'dd.MM.yy HH:mm:ss',
   'dd.MM.yyyy HH:mm',
   'EEEE, dd MMMM y',
