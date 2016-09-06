@@ -1,8 +1,8 @@
 formats["sr-latn-me"] = [
-  'dddd, dd. MMMM yyyy. HH.mm.ss',
+  'EEEE, dd. MMMM yyyy. HH.mm.ss',
   'dd. MMMM yyyy. HH.mm.ss',
+  'EEEE, dd. MMMM yyyy.',
   'dd.MM.yyyy. HH.mm.ss',
-  'dddd, dd. MMMM yyyy.',
   'd.M.yyyy. HH.mm.ss',
   'EEEE, dd. MMMM y.',
   'dd. MMMM yyyy.',

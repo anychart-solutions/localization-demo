@@ -1,9 +1,9 @@
 formats["my-mm"] = [
-  'dddd၊ dd MMMM yyyy HH:mm:ss',
+  'EEEE၊ dd MMMM yyyy HH:mm:ss',
   'd MMMM yyyy HH:mm:ss',
   'd MMM yyyy HH:mm:ss',
   'dd-MM-yyyy HH:mm:ss',
-  'dddd၊ dd MMMM yyyy',
+  'EEEE၊ dd MMMM yyyy',
   'EEEE၊ dd MMMM y',
   'HH:mm:ss zzzz',
   'd MMMM yyyy',

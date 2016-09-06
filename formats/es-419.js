@@ -1,7 +1,7 @@
 formats["es-419"] = [
-  'dddd, d \'de\' MMMM \'de\' yyyy HH:mm:ss',
+  'EEEE, d \'de\' MMMM \'de\' yyyy HH:mm:ss',
   'd \'de\' MMMM \'de\' yyyy HH:mm:ss',
-  'dddd, d \'de\' MMMM \'de\' yyyy',
+  'EEEE, d \'de\' MMMM \'de\' yyyy',
   'EEEE, d \'de\' MMMM \'de\' y',
   'd \'de\' MMMM \'de\' yyyy',
   'd \'de\' MMMM \'de\' y',

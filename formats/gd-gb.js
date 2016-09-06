@@ -1,7 +1,7 @@
 formats["gd-gb"] = [
-  'dddd, d\'mh\' MMMM yyyy HH:mm:ss',
+  'EEEE, d\'mh\' MMMM yyyy HH:mm:ss',
   'd\'mh\' MMMM yyyy HH:mm:ss',
-  'dddd, d\'mh\' MMMM yyyy',
+  'EEEE, d\'mh\' MMMM yyyy',
   'EEEE, d\'mh\' MMMM y',
   'd MMM yyyy HH:mm:ss',
   'dd/MM/yyyy HH:mm:ss',
