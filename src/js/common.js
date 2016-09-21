@@ -1,10 +1,10 @@
 (function () {
     var chart;
-    var text_doc = document.documentElement.innerHTML;
-    var array_url = [];
+    var product = $('body').data('product');
     var chart_container = 'server-status-chart';
     var data = serverStatusData();
     var $date_pattern = $('.date-pattern');
+    var default_format = 'EEEE, dd MMMM yyyy';
     formats = {};
 
     function hidePreloader() {
@@ -35,6 +35,7 @@
                 }
 
                 askEventLanguageLocale();
+                $table.find('td[data-code="en-us"]').trigger('click')
             }
         });
     }
@@ -59,33 +60,21 @@
     }
 
     function loadScript(url, callback, code) {
-        var body = $('body')[0];
+        var $body = $('body');
         var script = document.createElement('script');
         var el = 'script[src="' + url + '"]';
-        array_url.unshift(url);
+
         script.src = url;
 
-        if ($(el).length == 0) {
-            body.appendChild(script);
+        if ($(el).length === 0) {
+            $(script).attr('defer', 'defer');
+            $body.find('#js_common').before(script);
         }
-
-        if (callback.name === 'changeLocale') {
-            script.onload = callback(code);
-        } else if (callback.name === 'changePattern') {
-            var done = false;
-            script.onload = script.onreadystatechange = function () {
-                if (!done && (!this.readyState ||
-                    this.readyState === "loaded" || this.readyState === "complete")) {
-                    done = true;
-
-                    callback(code);
-                    displayFormatArray(url, code);
-                    displayFullSource(array_url);
-                }
-            };
-        }
+        script.onload = callback(code);
 
         displayLocaleJSON(url);
+        displayFormatArray(url, code);
+        displayFullSource(code);
     }
 
     function displayLocaleJSON(url) {
@@ -119,20 +108,26 @@
         }
     }
 
-    function displayFullSource(url) {
+    function displayFullSource(locale, input_format) {
         var $lang_mark = $('.language-markup');
-        var new_text_doc = text_doc.substr(0, text_doc.indexOf('</body>'));
+        var format = input_format || $date_pattern.find('td.active').text() || default_format;
+        var code_func = createChart.toString()
+            .replace('function createChart(data, container, locale, format) {', '')
+            .replace(/}$/, '')
+            .trim();
+        var code = 'anychart.onDocumentReady(function () {\n\t\tvar format ="' + format + '";\n' +
+            '\t\tvar locale = "' + locale + '";\n\t\t' + 'var data = serverStatusData();\n\t\t' + code_func + '\n\t\t});';
+        var doc = '<!DOCTYPE html>\n<html lang="en">\n<head>' +
+            '\n\t<meta charset="utf-8" />' +
+            '\n\t<script src="http://anychart.stg/products/anygantt/demos/localization/repo/anychart-bundle.min.js"></script>' +
+            '\n\t<script src="' + 'https://cdn.anychart.com/locale/1.1.0/' + locale + '.js"></script>' +
+            '\n\t<script src="http://anychart.stg/products/anygantt/demos/localization/repo/data.js"></script>' +
+            '\n</head>\n<body>' +
+            '\n\t<div id="container" style="width: 850px; height: 600px; margin: 0 auto;"></div>' +
+            '\n\t<script>\n\t\t' + code +
+            '\n\t</script>\n</body>\n</html>';
 
-        for (var i = 0; i < array_url.length; i++) {
-            if (new_text_doc.indexOf(url[i]) == -1) {
-                new_text_doc += '\n';
-                new_text_doc += '<script src="' + url[i] + '">' + '</script>';
-            }
-        }
-
-        new_text_doc += '\n</body>';
-        array_url = [];
-        $lang_mark.text(new_text_doc);
+        $lang_mark.text(doc);
         Prism.highlightElement($lang_mark[0]);
     }
 
@@ -152,7 +147,7 @@
 
         function reDrawChart() {
             if (window['anychart']['format']['locales'][code] != undefined) {
-                var format = $date_pattern.find('td.active').text();
+                var format = $date_pattern.find('td.active').text() || default_format;
 
                 clearInterval(timerId);
                 disposeChart();
@@ -167,6 +162,7 @@
         disposeChart();
         createChart(data, chart_container, locale, format);
         changeInputFormat(format, flag);
+        displayFullSource(locale, format);
     }
 
     function askEventLanguageLocale() {
@@ -178,7 +174,7 @@
             loadScript(url, changeLocale, code);
             getDateTimePattern(code);
             activeEl($that);
-        }).first().trigger('click');
+        });
     }
 
     function askEventDatePattern() {
@@ -208,17 +204,12 @@
     }
 
     function createChart(data, container, locale, format) {
-        var date_format = 'EEEE, dd MMMM yyyy - hh:mm';
-
-        if (format) {
-            date_format = format;
-        }
         // create data tree on our data
         var treeData = anychart.data.tree(data, anychart.enums.TreeFillingMethod.AS_TABLE);
 
         // set a localization for output
         anychart.format.outputLocale(locale);
-        anychart.format.outputDateTimeFormat(date_format);
+        anychart.format.outputDateTimeFormat(format);
 
         // create project gantt chart
         chart = anychart.ganttResource();
@@ -323,4 +314,37 @@
             $('.tables-container').detach().insertAfter('.preview-container');
         }
     }
+
+    /* Prism copy to clipbaord */
+    $('pre.copytoclipboard').each(function () {
+        $this = $(this);
+        $button = $('<button style="font-size: 12px;">Copy</button>');
+        $this.wrap('<div/>').removeClass('copytoclipboard');
+        $wrapper = $this.parent();
+        $wrapper.addClass('copytoclipboard-wrapper').css({position: 'relative'});
+        $button.css({
+            position: 'absolute',
+            top: 10,
+            right: 27
+        }).appendTo($wrapper).addClass('copytoclipboard btn btn-default');
+        /* */
+        var copyCode = new Clipboard('button.copytoclipboard', {
+            target: function (trigger) {
+                return trigger.previousElementSibling;
+            }
+        });
+        copyCode.on('success', function (event) {
+            event.clearSelection();
+            event.trigger.textContent = 'Copied';
+            window.setTimeout(function () {
+                event.trigger.textContent = 'Copy';
+            }, 2000);
+        });
+        copyCode.on('error', function (event) {
+            event.trigger.textContent = 'Press "Ctrl + C" to copy';
+            window.setTimeout(function () {
+                event.trigger.textContent = 'Copy';
+            }, 2000);
+        });
+    });
 })();
