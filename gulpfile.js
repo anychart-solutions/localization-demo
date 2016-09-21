@@ -11,12 +11,12 @@ var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 
 var config = {
-    sourceDir: './dist/',
-    publicDir: './build/'
+    sourceDir: './src/',
+    publicDir: './dist/'
 };
 
 var filesToMove = [
-    './dist/js/plugins/**/*.*'
+    './src/js/plugins/**/*.*'
 ];
 
 /* Scripts task */
@@ -49,8 +49,8 @@ gulp.task('styles', function () {
 gulp.task('move', function(){
     // the base option sets the relative root for the set of files,
     // preserving the folder structure
-    gulp.src(filesToMove, { base: './dist/js/plugins' })
-        .pipe(gulp.dest('./build/js/plugins/'));
+    gulp.src(filesToMove, { base: './src/js/plugins' })
+        .pipe(gulp.dest('./dist/js/plugins/'));
 });
 
 // Static Server + watching scss/html files

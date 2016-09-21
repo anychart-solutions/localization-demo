@@ -22,11 +22,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 
     <!-- Prism -->
-    <link rel="stylesheet" href="build/js/plugins/prism/prism.min.css">
+    <link rel="stylesheet" href="dist/js/plugins/prism/prism.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism-coy.min.css">
 
     <!-- css -->
-    <link rel="stylesheet" href="build/css/app.min.css">
+    <link rel="stylesheet" href="dist/css/app.min.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -35,7 +35,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="no-iframe">
+<body class="no-iframe" data-product="anymap">
 <div id="loader-wrapper" class="anychart-loader">
     <div class="rotating-cover">
         <div class="rotating-plane">
@@ -53,7 +53,7 @@
         <div class="row">
             <div class="col-lg-8 col-sm-12 preview-container">
                 <div class="bs-callout bs-callout-info chart-container">
-                    <h4>Preview</h4>
+                    <h4>AnyMap</h4>
 
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs tabs-control" role="tablist">
@@ -86,7 +86,7 @@
                         </div>
                         <div role="tabpanel" class="tab-pane fade display-code" id="full-source">
                             <div class="prism-window">
-                                <pre><code class="language-markup"></code></pre>
+                                <pre class="copytoclipboard"><code class="language-markup"></code></pre>
                             </div>
                         </div>
                     </div>
@@ -153,10 +153,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script src="http://cdn.anychart.com/geodata/1.2.0/countries/nepal/nepal.js"></script>
+<script src="http://cdn.anychart.com/geodata/1.2.0/custom/world/world.js"></script>
 <script src="anychart-bundle.min.js"></script>
-<!-- Prism Js -->
-<script src="build/js/plugins/prism/prism.min.js"></script>
-<script src="build/js/common.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js"></script>
+<script src="dist/js/plugins/prism/prism.min.js"></script>
+<script id="js_common" src="dist/js/common.js"></script>
 </body>
 </html>
