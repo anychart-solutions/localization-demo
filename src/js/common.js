@@ -3,11 +3,13 @@
     var product = $('body').data('product');
     var chart_container = 'map-chart';
     var $date_pattern = $('.date-pattern');
-    var default_format = 'EEEE, dd MMMM yyyy';
+    var default_format = 'EEEE, dd MMMM yyy';
     formats = {};
 
     function hidePreloader() {
-        $('#loader-wrapper').fadeOut('slow');
+        $('#loader-wrapper').fadeOut('slow', function () {
+            scrollPosition();
+        });
     }
 
     function activeEl(el) {
@@ -22,6 +24,10 @@
                 var data = json;
                 var $table = $('.language-locale').find('tbody');
                 var locale;
+
+                data['anychart-locales'].locales.sort(function (a, b) {
+                    return a['englishName'].localeCompare(b['englishName']);
+                });
 
                 for (var i = 0; i < data['anychart-locales'].locales.length; i++) {
                     locale = data['anychart-locales'].locales[i];
@@ -207,8 +213,7 @@
         anychart.format.outputLocale(locale);
         anychart.format.outputDateTimeFormat(format);
 
-        // creates data set
-        var dataSet = anychart.data.set([
+        var data = [
             {id: "AF", name: "Afghanistan", size: 7.5, date: '26 October 2015', description: 'Hindu Kush earthquake'},
             {id: "DZ", name: "Algeria", size: 7.7, date: '10 October 1980', description: 'El Asnam earthquake'},
             {id: "AR", name: "Argentina", size: 8.0, date: '27 October 1894', description: 'San Juan earthquake'},
@@ -270,7 +275,18 @@
             {id: "US", name: "United States", size: 9.2, date: '27 March 1964', description: 'Alaska earthquake'},
             {id: "VE", name: "Venezuela", size: 7.5, date: '26 March 1812', description: 'Caracas earthquake'},
             {id: "VN", name: "Vietnam", size: 6.8, date: '24 June 1983', description: 'Tuan Giao earthquake'}
-        ]);
+        ];
+
+        data.sort(function (a,b) {
+            return new Date(a['date']).getTime() - new Date(b['date']).getTime();
+        });
+
+        // creates data set
+        var dataSet = anychart.data.set(data);
+
+        var _title = 'Strongest Earthquakes by Country\n' + 'From: ' +
+            anychart.format.dateTime(data[0]['date'], format, -8 * 60, locale) +
+            '\nTo: ' + anychart.format.dateTime(data[data.length - 1][['date']], format, -8 * 60, locale);
 
         // creates Map Chart
         map = anychart.map();
@@ -284,7 +300,7 @@
         credits.logoSrc('//en.wikipedia.org/static/favicon/wikipedia.ico');
 
         // sets Chart Title
-        map.title().text('Strongest Earthquakes by Country').enabled(true).padding([20, 0, 0, 0]);
+        map.title().text(_title).enabled(true).padding([20, 0, 0, 0]);
         map.allowPointsSelect(false);
         // sets bubble max size settings
         map.minBubbleSize(3);
@@ -356,6 +372,15 @@
         placeBlocks();
     });
 
+    function scrollPosition() {
+        var $language_locale = $('.language-locale');
+        var top = $language_locale.find('.active').offset().top - $language_locale.height() / 2 + $language_locale.find('.active').height() / 2;
+
+        $language_locale.animate({
+            scrollTop: top
+        }, 500);
+    }
+
     function placeBlocks() {
         var mq = window.matchMedia('(max-width: 768px)');
 
@@ -369,16 +394,18 @@
     /* Prism copy to clipbaord */
     $('pre.copytoclipboard').each(function () {
         $this = $(this);
-        $button = $('<button style="font-size: 12px;">Copy</button>');
+        $button = $('<button></button>');
         $this.wrap('<div/>').removeClass('copytoclipboard');
         $wrapper = $this.parent();
         $wrapper.addClass('copytoclipboard-wrapper').css({position: 'relative'});
         $button.css({
             position: 'absolute',
             top: 10,
-            right: 27
+            right: 27,
+            width: 55,
+            height: 31
         }).appendTo($wrapper).addClass('copytoclipboard btn btn-default');
-        /* */
+
         var copyCode = new Clipboard('button.copytoclipboard', {
             target: function (trigger) {
                 return trigger.previousElementSibling;
@@ -386,9 +413,9 @@
         });
         copyCode.on('success', function (event) {
             event.clearSelection();
-            event.trigger.textContent = 'Copied';
+            $(event.trigger).addClass('copied');
             window.setTimeout(function () {
-                event.trigger.textContent = 'Copy';
+                $(event.trigger).removeClass('copied');
             }, 2000);
         });
         copyCode.on('error', function (event) {
