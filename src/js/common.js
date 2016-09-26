@@ -11,7 +11,9 @@
     formats = {};
 
     function hidePreloader() {
-        $('#loader-wrapper').fadeOut('slow');
+        $('#loader-wrapper').fadeOut('slow', function() {
+            scrollPosition();
+        });
     }
 
     function activeEl(el) {
@@ -26,6 +28,10 @@
                 var data = json;
                 var $table = $('.language-locale').find('tbody');
                 var locale;
+
+                data['anychart-locales'].locales.sort(function (a, b) {
+                    return a['englishName'].localeCompare(b['englishName']);
+                });
 
                 for (var i = 0; i < data['anychart-locales'].locales.length; i++) {
                     locale = data['anychart-locales'].locales[i];
@@ -216,6 +222,10 @@
         var dataTable = anychart.data.table();
         dataTable.addData(data);
 
+        var _title = 'ORCL Intraday\n' + 'From: ' +
+            anychart.format.dateTime(data[0][0], format, -8 * 60, locale) +
+            '\nTo: ' + anychart.format.dateTime(data[data.length - 1][0], format, -8 * 60, locale);
+
         // map loaded data
         var closeMapping = dataTable.mapAs({'value': 4});
         var volumeMapping = dataTable.mapAs({'value': 5, 'type': 'average'});
@@ -224,6 +234,8 @@
         chart = anychart.stock();
         chart.padding().left('70px');
         chart.padding().top('20px');
+        // set chart title text settings
+        chart.title(_title).padding([20, 0, 10, 0]);
 
         // create value plot on the chart
         var valuePlot = chart.plot(0);
@@ -236,9 +248,6 @@
         valuePlot.legend().itemsTextFormatter(function () {
             return anychart.format.number(this.value, locale);
         });
-        valuePlot.yAxis().labels().textFormatter(function () {
-            return anychart.format.number(this.value, locale);
-        });
 
         // create volume plot on the chart
         var volumePlot = chart.plot(1);
@@ -248,9 +257,6 @@
             return anychart.format.dateTime(this.value, format, null, locale);
         });
         volumePlot.legend().itemsTextFormatter(function () {
-            return anychart.format.number(this.value, locale);
-        });
-        volumePlot.yAxis().labels().textFormatter(function () {
             return anychart.format.number(this.value, locale);
         });
 
@@ -309,6 +315,16 @@
         placeBlocks();
     });
 
+    function scrollPosition() {
+        var $language_locale = $('.language-locale');
+        var top = $language_locale.find('.active').offset().top -
+            $language_locale.height() / 2 + $language_locale.find('.active').height() / 2;
+
+        $language_locale.animate({
+            scrollTop: top
+        }, 500);
+    }
+
     function placeBlocks() {
         var mq = window.matchMedia('(max-width: 768px)');
 
@@ -318,19 +334,22 @@
             $('.tables-container').detach().insertAfter('.preview-container');
         }
     }
+
     /* Prism copy to clipbaord */
     $('pre.copytoclipboard').each(function () {
         $this = $(this);
-        $button = $('<button style="font-size: 12px;">Copy</button>');
+        $button = $('<button></button>');
         $this.wrap('<div/>').removeClass('copytoclipboard');
         $wrapper = $this.parent();
         $wrapper.addClass('copytoclipboard-wrapper').css({position: 'relative'});
         $button.css({
             position: 'absolute',
             top: 10,
-            right: 27
+            right: 27,
+            width: 55,
+            height: 31
         }).appendTo($wrapper).addClass('copytoclipboard btn btn-default');
-        /* */
+
         var copyCode = new Clipboard('button.copytoclipboard', {
             target: function (trigger) {
                 return trigger.previousElementSibling;
@@ -338,9 +357,9 @@
         });
         copyCode.on('success', function (event) {
             event.clearSelection();
-            event.trigger.textContent = 'Copied';
+            $(event.trigger).addClass('copied');
             window.setTimeout(function () {
-                event.trigger.textContent = 'Copy';
+                $(event.trigger).removeClass('copied');
             }, 2000);
         });
         copyCode.on('error', function (event) {

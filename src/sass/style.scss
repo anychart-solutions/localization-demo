@@ -144,5 +144,18 @@ h1.title {
   }
 }
 
+.copytoclipboard::after {
+  position: absolute;
+  font-size: 12px;
+  content: 'Copy';
+  left: 12px;
+  top: 8px;
+}
+
+.copytoclipboard.copied::after {
+  content: 'Copied';
+  left: 6px;
+}
+
 
 
