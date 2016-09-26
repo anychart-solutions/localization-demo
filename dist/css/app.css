@@ -273,6 +273,17 @@ h1.title {
   margin-top: 15px;
   margin-bottom: 0; }
 
+.copytoclipboard::after {
+  position: absolute;
+  font-size: 12px;
+  content: 'Copy';
+  left: 12px;
+  top: 8px; }
+
+.copytoclipboard.copied::after {
+  content: 'Copied';
+  left: 6px; }
+
 @media screen and (max-width: 768px) {
   .table-responsive {
     overflow: scroll !important; } }

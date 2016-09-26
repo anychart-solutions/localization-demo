@@ -8,7 +8,9 @@
     formats = {};
 
     function hidePreloader() {
-        $('#loader-wrapper').fadeOut('slow');
+        $('#loader-wrapper').fadeOut('slow', function () {
+            scrollPosition();
+        });
     }
 
     function activeEl(el) {
@@ -24,6 +26,10 @@
                 var $table = $('.language-locale').find('tbody');
                 var locale;
 
+                data['anychart-locales'].locales.sort(function (a, b) {
+                    return a['englishName'].localeCompare(b['englishName']);
+                });
+
                 for (var i = 0; i < data['anychart-locales'].locales.length; i++) {
                     locale = data['anychart-locales'].locales[i];
                     $table.append(
@@ -35,7 +41,7 @@
                 }
 
                 askEventLanguageLocale();
-                $table.find('td[data-code="en-us"]').trigger('click')
+                $table.find('td[data-code="en-us"]').trigger('click');
             }
         });
     }
@@ -305,6 +311,16 @@
         placeBlocks();
     });
 
+    function scrollPosition() {
+        var $language_locale = $('.language-locale');
+        var top = $language_locale.find('.active').offset().top -
+            $language_locale.height() / 2 + $language_locale.find('.active').height() / 2;
+
+        $language_locale.animate({
+            scrollTop: top
+        }, 500);
+    }
+
     function placeBlocks() {
         var mq = window.matchMedia('(max-width: 768px)');
 
@@ -318,16 +334,18 @@
     /* Prism copy to clipbaord */
     $('pre.copytoclipboard').each(function () {
         $this = $(this);
-        $button = $('<button style="font-size: 12px;">Copy</button>');
+        $button = $('<button></button>');
         $this.wrap('<div/>').removeClass('copytoclipboard');
         $wrapper = $this.parent();
         $wrapper.addClass('copytoclipboard-wrapper').css({position: 'relative'});
         $button.css({
             position: 'absolute',
             top: 10,
-            right: 27
+            right: 27,
+            width: 55,
+            height: 31
         }).appendTo($wrapper).addClass('copytoclipboard btn btn-default');
-        /* */
+
         var copyCode = new Clipboard('button.copytoclipboard', {
             target: function (trigger) {
                 return trigger.previousElementSibling;
@@ -335,9 +353,9 @@
         });
         copyCode.on('success', function (event) {
             event.clearSelection();
-            event.trigger.textContent = 'Copied';
+            $(event.trigger).addClass('copied');
             window.setTimeout(function () {
-                event.trigger.textContent = 'Copy';
+                $(event.trigger).removeClass('copied');
             }, 2000);
         });
         copyCode.on('error', function (event) {
