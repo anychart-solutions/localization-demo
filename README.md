@@ -12,4 +12,4 @@ It is an irreplaceable tool for a developer; it provides all the country and lan
 * [Technical Support](https://anychart.com/support)
 
 ## License
-[© AnyChart.com - JavaScript charts](http://www.anychart.com). Released under the [Apache 2.0 License](https://github.com/anychart-solutions/localization-demo/blob/master/LICENSE).
+[© AnyChart.com - JavaScript charts](http://www.anychart.com). Released under the [Apache 2.0 License](https://github.com/anychart-solutions/localization-demo/blob/anychart/LICENSE).
