@@ -3,7 +3,7 @@
 ## AnyStock Localization and Date-Time Formatting Utility
 AnyStock Localization and Date-Time Formatting Utility demonstrates all the functionality necessary for formatting date-time data.
 It is an irreplaceable tool for a developer; it provides all the country and language-dependent date-time settings, plus allows choosing preset date-time formatting patterns or creating your own ones - with ease.
-[<img src="http://static.anychart.com/images/github/anystock-localization.png" alt="AnyStock Localization and Date-Time Formatting Utility">](http://anychart.stg/products/anystock/demos/localization/)
+[<img src="http://static.anychart.com/images/github/anystock-localization.png" alt="AnyStock Localization and Date-Time Formatting Utility">](http://anychart.com/products/anystock/demos/localization/)
 
 ## Further Learning
 * [Documentation](https://docs.anychart.com)
