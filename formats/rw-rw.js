@@ -1,0 +1,21 @@
+formats["rw-rw"] = [
+  'EEEE, yyyy MMMM dd HH:mm:ss',
+  'EEEE, yyyy MMMM dd',
+  'EEEE, y MMMM dd',
+  'HH:mm:ss zzzz',
+  'HH:mm:ss z',
+  'HH:mm:ss',
+  'MMMM dd',
+  'HH:mm',
+  'yyyy\'-\'MM\'-\'dd\'T\'HH\':\'mm\':\'ss',
+  'yyyy MMMM d HH:mm:ss',
+  'yyyy MMM d HH:mm:ss',
+  'yyyy/MM/dd HH:mm:ss',
+  'yyyy MMMM d',
+  'yyyy MMM d',
+  'yyyy/MM/dd',
+  'yyyy MMMM',
+  'y MMMM d',
+  'yy/MM/dd',
+  'y MMM d'
+];

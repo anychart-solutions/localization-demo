@@ -1,0 +1,21 @@
+formats["sr-latn-rs"] = [
+  'EEEE, dd. MMMM yyyy. HH.mm.ss',
+  'dd. MMMM yyyy. HH.mm.ss',
+  'EEEE, dd. MMMM yyyy.',
+  'dd.MM.yyyy. HH.mm.ss',
+  'd.M.yyyy. HH.mm.ss',
+  'EEEE, dd. MMMM y.',
+  'dd. MMMM yyyy.',
+  'HH.mm.ss zzzz',
+  'dd. MMMM y.',
+  'dd.MM.yyyy.',
+  'HH.mm.ss z',
+  'MMMM yyyy.',
+  'd.M.yyyy.',
+  'HH.mm.ss',
+  'dd.MM.y.',
+  'MMMM dd',
+  'd.M.yy.',
+  'HH.mm',
+  'yyyy\'-\'MM\'-\'dd\'T\'HH\':\'mm\':\'ss'
+];

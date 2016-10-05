@@ -1,0 +1,22 @@
+formats["es-419"] = [
+  'EEEE, d \'de\' MMMM \'de\' yyyy HH:mm:ss',
+  'd \'de\' MMMM \'de\' yyyy HH:mm:ss',
+  'EEEE, d \'de\' MMMM \'de\' yyyy',
+  'EEEE, d \'de\' MMMM \'de\' y',
+  'd \'de\' MMMM \'de\' yyyy',
+  'd \'de\' MMMM \'de\' y',
+  'd MMM yyyy HH:mm:ss',
+  'd/M/yyyy HH:mm:ss',
+  'MMMM \'de\' yyyy',
+  'h:mm:ss a zzzz',
+  'h:mm:ss a z',
+  'd MMM yyyy',
+  'h:mm:ss a',
+  'HH:mm:ss',
+  'd/M/yyyy',
+  'MMMM dd',
+  'd MMM y',
+  'd/M/yy',
+  'h:mm a',
+  'yyyy\'-\'MM\'-\'dd\'T\'HH\':\'mm\':\'ss'
+];

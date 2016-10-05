@@ -1,0 +1,21 @@
+formats["ha-latn-ng"] = [
+  'EEEE, d MMMM, yyyy HH:mm:ss',
+  'd MMMM, yyyy HH:mm:ss',
+  'd MMM, yyyy HH:mm:ss',
+  'EEEE, d MMMM, yyyy',
+  'd/M/yyyy HH:mm:ss',
+  'EEEE, d MMMM, y',
+  'HH:mm:ss zzzz',
+  'd MMMM, yyyy',
+  'd MMM, yyyy',
+  'HH:mm:ss z',
+  'MMMM yyyy',
+  'd MMMM, y',
+  'HH:mm:ss',
+  'd MMM, y',
+  'd/M/yyyy',
+  'MMMM dd',
+  'd/M/yy',
+  'HH:mm',
+  'yyyy\'-\'MM\'-\'dd\'T\'HH\':\'mm\':\'ss'
+];

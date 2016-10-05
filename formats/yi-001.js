@@ -1,0 +1,21 @@
+formats["yi-001"] = [
+  'EEEE, dטן MMMM yyyy HH:mm:ss',
+  'dטן MMMM yyyy HH:mm:ss',
+  'dטן MMM yyyy HH:mm:ss',
+  'EEEE, dטן MMMM yyyy',
+  'dd/MM/yyyy HH:mm:ss',
+  'EEEE, dטן MMMM y',
+  'HH:mm:ss zzzz',
+  'dטן MMMM yyyy',
+  'dטן MMM yyyy',
+  'dטן MMMM y',
+  'dטן MMM y',
+  'HH:mm:ss z',
+  'dd/MM/yyyy',
+  'MMMM yyyy',
+  'HH:mm:ss',
+  'dd/MM/yy',
+  'MMMM dd',
+  'HH:mm',
+  'yyyy\'-\'MM\'-\'dd\'T\'HH\':\'mm\':\'ss'
+];

@@ -1,0 +1,21 @@
+formats["hr-ba"] = [
+  'EEEE, d. MMMM yyyy. HH:mm:ss',
+  'd. MMMM yyyy. HH:mm:ss',
+  'd. MMM yyyy. HH:mm:ss',
+  'dd.MM.yyyy. HH:mm:ss',
+  'EEEE, d. MMMM yyyy.',
+  'EEEE, d. MMMM y.',
+  'HH:mm:ss zzzz',
+  'd. MMMM yyyy.',
+  'd. MMM yyyy.',
+  'dd.MM.yyyy.',
+  'HH:mm:ss z',
+  'MMMM yyyy.',
+  'd. MMMM y.',
+  'd. MMM y.',
+  'HH:mm:ss',
+  'dd.MM.y.',
+  'MMMM dd',
+  'HH:mm',
+  'yyyy\'-\'MM\'-\'dd\'T\'HH\':\'mm\':\'ss'
+];

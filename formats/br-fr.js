@@ -1,0 +1,21 @@
+formats["br-fr"] = [
+  'HH:mm:ss zzzz',
+  'HH:mm:ss z',
+  'MMMM yyyy',
+  'HH:mm:ss',
+  'MMMM dd',
+  'HH:mm',
+  'yyyy\'-\'MM\'-\'dd\'T\'HH\':\'mm\':\'ss',
+  'yyyy MMMM d, EEEE HH:mm:ss',
+  'yyyy MMMM d HH:mm:ss',
+  'yyyy MMM d HH:mm:ss',
+  'yyyy-MM-dd HH:mm:ss',
+  'yyyy MMMM d, EEEE',
+  'y MMMM d, EEEE',
+  'yyyy MMMM d',
+  'yyyy MMM d',
+  'yyyy-MM-dd',
+  'y MMMM d',
+  'y MMM d',
+  'y-MM-dd'
+];

@@ -1,0 +1,21 @@
+formats["gd-gb"] = [
+  'EEEE, d\'mh\' MMMM yyyy HH:mm:ss',
+  'd\'mh\' MMMM yyyy HH:mm:ss',
+  'EEEE, d\'mh\' MMMM yyyy',
+  'EEEE, d\'mh\' MMMM y',
+  'd MMM yyyy HH:mm:ss',
+  'dd/MM/yyyy HH:mm:ss',
+  'd\'mh\' MMMM yyyy',
+  'd\'mh\' MMMM y',
+  'HH:mm:ss zzzz',
+  'HH:mm:ss z',
+  'd MMM yyyy',
+  'dd/MM/yyyy',
+  'MMMM yyyy',
+  'HH:mm:ss',
+  'MMMM dd',
+  'd MMM y',
+  'dd/MM/y',
+  'HH:mm',
+  'yyyy\'-\'MM\'-\'dd\'T\'HH\':\'mm\':\'ss'
+];

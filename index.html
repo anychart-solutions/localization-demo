@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <meta name="author" content="anychart.com">
+
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Dashboard "Localization and Date-Time Formatting"</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <!-- AnyChart UI -->
+    <link rel="stylesheet" href="https://cdn.anychart.com/css/7.11.0/anychart-ui.min.css">
+    <link rel="stylesheet" href="https://cdn.anychart.com/fonts/2.0.0/anychart.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+
+    <!-- Prism css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism-coy.min.css">
+
+    <!-- css -->
+    <link id="css_app" rel="stylesheet" href="dist/css/app.min.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="no-iframe" data-product="anychart">
+<div id="loader-wrapper" class="anychart-loader">
+    <div class="rotating-cover">
+        <div class="rotating-plane">
+            <div class="chart-row">
+                <span class="chart-col green"></span>
+                <span class="chart-col orange"></span>
+                <span class="chart-col red"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="wrapper">
+    <div class="container dashboard-content">
+        <div class="row">
+            <div class="col-lg-8 col-sm-12 preview-container">
+                <div class="bs-callout bs-callout-info chart-container">
+                    <h4>AnyChart</h4>
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs tabs-control" role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#acme-chart" role="tab" data-toggle="tab">ACME Share Price</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#locale-json" role="tab" data-toggle="tab">Display Locale - JSON</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#format-array" role="tab" data-toggle="tab">Display Format - Array</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#full-source" role="tab" data-toggle="tab">Full source</a>
+                        </li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade in active chart" id="acme-chart"></div>
+                        <div role="tabpanel" class="tab-pane fade display-code" id="locale-json">
+                            <div class="prism-window">
+                                <pre><code class="language-json"></code></pre>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade display-code" id="format-array">
+                            <div class="prism-window">
+                                <pre><code class="language-javascript"></code></pre>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade display-code" id="full-source">
+                            <div class="prism-window">
+                                <pre class="copytoclipboard"><code class="language-markup"></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-12 tables-container">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-6 col-xs-12">
+                        <div class="bs-callout bs-callout-info bs-callout-border-default">
+                            <h4>Select Language:</h4>
+
+                            <div class="table-responsive language-locale">
+                                <table class="table table-hover">
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-sm-6 col-xs-12">
+                        <div class="bs-callout bs-callout-info bs-callout-border-default">
+                            <h4>Date Time Format Pattern:</h4>
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a data-toggle="tab" href="#select-preset">Select Preset</a></li>
+                                <li><a data-toggle="tab" href="#custom-format">Custom</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div id="select-preset" class="tab-pane fade in active select-preset">
+                                    <div class="table-responsive date-pattern">
+                                        <table class="table table-hover">
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="format">Format:</label>
+                                        <input class="form-control format-pattern-input" type="text" id="format"
+                                               readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="example-format">Example:</label>
+                                        <input class="form-control format-input" type="text" id="example-format"
+                                               readonly>
+                                    </div>
+                                </div>
+                                <div id="custom-format" class="tab-pane fade custom-format">
+                                    <div class="form-group">
+                                        <label for="custom-format-input">Format:</label>
+                                        <input class="form-control format-pattern-input" type="text"
+                                               id="custom-format-input">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="custom-example-format-input">Example:</label>
+                                        <input class="form-control format-input" type="text"
+                                               id="custom-example-format-input" readonly>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="anychart-bundle.min.js"></script>
+<script src="http://cdn.anychart.com/csv-data/orcl-intraday.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js"></script>
+<script src="dist/js/plugins/prism/prism.min.js"></script>
+<script id="js_common" src="dist/js/common.js"></script>
+</body>
+</html>
