@@ -3,7 +3,7 @@
 ## AnyGantt Localization and Date-Time Formatting Utility
 AnyGantt Localization and Date-Time Formatting Utility demonstrates all the functionality necessary for formatting date-time data.
 It is an irreplaceable tool for a developer; it provides all the country and language-dependent date-time settings, plus allows choosing preset date-time formatting patterns or creating your own ones - with ease.
-[<img src="http://static.anychart.com/images/github/anygantt-localization.png" alt="AnyGantt Localization and Date-Time Formatting Utility">](http://anychart.stg/products/anygantt/demos/localization/)
+[<img src="http://static.anychart.com/images/github/anygantt-localization.png" alt="AnyGantt Localization and Date-Time Formatting Utility">](http://anychart.com/products/anygantt/demos/localization/)
 
 ## Further Learning
 * [Documentation](https://docs.anychart.com)
