@@ -3,7 +3,7 @@
 ## AnyChart Localization and Date-Time Formatting Utility
 AnyChart Localization and Date-Time Formatting Utility demonstrates all the functionality necessary for formatting date-time data.
 It is an irreplaceable tool for a developer; it provides all the country and language-dependent date-time settings, plus allows choosing preset date-time formatting patterns or creating your own ones - with ease.
-[<img src="http://static.anychart.com/images/github/anychart-localization.png" alt="AnyChart Localization and Date-Time Formatting Utility">](http://anychart.stg/products/anychart/demos/localization/)
+[<img src="http://static.anychart.com/images/github/anychart-localization.png" alt="AnyChart Localization and Date-Time Formatting Utility">](http://anychart.com/products/anychart/demos/localization/)
 
 ## Further Learning
 * [Documentation](https://docs.anychart.com)
