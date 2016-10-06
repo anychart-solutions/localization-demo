@@ -1,7 +1,7 @@
 [<img src="https://cdn.anychart.com/images/logo-transparent-segoe.png?2" width="234px" alt="AnyChart - Robust JavaScript/HTML5 Chart library for any project">](http://www.anychart.com)
 
 ## Localization and Date-Time Formatting Utility
-AnyChart Localization and Date-Time Formatting Utility demonstrates all the functionality necessary for formatting date-time data.
+Localization and Date-Time Formatting Utility demonstrates all the functionality necessary for formatting date-time data.
 It is an irreplaceable tool for a developer; it provides all the country and language-dependent date-time settings, plus allows choosing preset date-time formatting patterns or creating your own ones - with ease.
 
 ## AnyChart
