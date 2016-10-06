@@ -1,15 +1,19 @@
 [<img src="https://cdn.anychart.com/images/logo-transparent-segoe.png?2" width="234px" alt="AnyStock - Robust JavaScript/HTML5 Chart library for any project">](http://www.anychart.com)
 
-## AnyStock Localization and Date-Time Formatting Utility
-AnyStock Localization and Date-Time Formatting Utility demonstrates all the functionality necessary for formatting date-time data.
+## Localization and Date-Time Formatting Utility
+Localization and Date-Time Formatting Utility demonstrates all the functionality necessary for formatting date-time data.
 It is an irreplaceable tool for a developer; it provides all the country and language-dependent date-time settings, plus allows choosing preset date-time formatting patterns or creating your own ones - with ease.
 
+## AnyStock
 [<img src="http://static.anychart.com/images/github/anystock-localization.png?1" alt="AnyStock Localization and Date-Time Formatting Utility">](http://anychart.com/products/anystock/demos/localization/)
 
+## AnyChart
 [<img src="http://static.anychart.com/images/github/anychart-localization.png?1" alt="AnyChart Localization and Date-Time Formatting Utility">](http://anychart.com/products/anychart/demos/localization/)
 
+## AnyMap
 [<img src="http://static.anychart.com/images/github/anymap-localization.png" alt="AnyMap Localization and Date-Time Formatting Utility">](http://anychart.com/products/anymap/demos/localization/)
 
+## AnyGantt
 [<img src="http://static.anychart.com/images/github/anygantt-localization.png" alt="AnyGantt Localization and Date-Time Formatting Utility">](http://anychart.com/products/anygantt/demos/localization/)
 
 ## Further Learning
