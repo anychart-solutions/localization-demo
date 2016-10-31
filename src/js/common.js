@@ -260,11 +260,7 @@
          */
         var seriesConfiguration = function (series, name) {
             series.name(name);
-            series.tooltip().title(false);
-            series.tooltip().separator(false);
-            series.tooltip().textFormatter("{%Value} times");
             series.hoverMarkers().enabled(true).size(4);
-            series.tooltip().position('right').anchor('leftBottom').offsetX(2).offsetY(5);
         };
 
         // temp variable to store series instance

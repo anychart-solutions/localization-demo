@@ -260,11 +260,7 @@
          */
         var seriesConfiguration = function (series, name) {
             series.name(name);
-            series.tooltip().title(false);
-            series.tooltip().separator(false);
-            series.tooltip().textFormatter("{%Value} times");
             series.hoverMarkers().enabled(true).size(4);
-            series.tooltip().position('right').anchor('leftBottom').offsetX(2).offsetY(5);
         };
 
         // temp variable to store series instance
@@ -296,6 +292,7 @@
         });
 
         chart.tooltip().textFormatter(function () {
+            debugger;
             return this.points[0].seriesName + ': ' + this.points[0].value +
                 '\n' + this.points[1].seriesName + ': ' + this.points[1].value +
                 '\n' + this.points[2].seriesName + ': ' + this.points[2].value;
