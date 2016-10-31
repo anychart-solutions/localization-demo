@@ -249,8 +249,6 @@
         chart.crosshair().enabled(true).yStroke(null);
         // disable one of the chart grids
         chart.grid(0).enabled(false);
-        // set container id for the chart
-        chart.container('container');
         // set chart title text settings
         chart.title(_title).padding([20, 0, 10, 0]);
         // set yAxis title
