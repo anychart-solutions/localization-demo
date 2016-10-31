@@ -291,8 +291,7 @@
             return anychart.format.dateTime(this.points[0].x, format, -8 * 60, locale);
         });
 
-        chart.tooltip().textFormatter(function () {
-            debugger;
+        chart.tooltip().unionTextFormatter(function () {
             return this.points[0].seriesName + ': ' + this.points[0].value +
                 '\n' + this.points[1].seriesName + ': ' + this.points[1].value +
                 '\n' + this.points[2].seriesName + ': ' + this.points[2].value;
