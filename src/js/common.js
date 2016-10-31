@@ -229,13 +229,13 @@
 
         // Set a localization for output.
         anychart.format.outputLocale(locale);
-        // create data set on our data,also we can pud data directly to series
+        // create data set on our data, also we can put data directly to series
         var dataSet = anychart.data.set(data);
 
-        // map data for the first series,take value from first column of data set
+        // map data for the first series, take value from first column of data set
         var seriesData_1 = dataSet.mapAs({x: [0], value: [1]});
 
-        // map data for the second series,take value from second column of data set
+        // map data for the second series, take value from second column of data set
         var seriesData_2 = dataSet.mapAs({x: [0], value: [2]});
 
         // map data for the third series, take x from the zero column and value from the third column of data set
