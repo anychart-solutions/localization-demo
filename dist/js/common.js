@@ -11,7 +11,7 @@
     formats = {};
 
     function hidePreloader() {
-        $('#loader-wrapper').fadeOut('slow', function() {
+        $('#loader-wrapper').fadeOut('slow', function () {
             scrollPosition();
         });
     }
@@ -222,12 +222,12 @@
         var dataTable = anychart.data.table();
         dataTable.addData(data);
 
-        var _title = 'ORCL Intraday\n' + 'From: ' +
+        var _title = 'ORACLE Intraday\n' + 'From: ' +
             anychart.format.dateTime(data[0][0], format, -8 * 60, locale) +
             '\nTo: ' + anychart.format.dateTime(data[data.length - 1][0], format, -8 * 60, locale);
 
         // map loaded data
-        var closeMapping = dataTable.mapAs({'value': 4});
+        var closeMapping = dataTable.mapAs({'open': 1, 'high': 2, 'low': 3, 'close': 4});
         var volumeMapping = dataTable.mapAs({'value': 5, 'type': 'average'});
 
         // create stock chart
@@ -238,20 +238,26 @@
         chart.title(_title).padding([20, 0, 10, 0]);
 
         // create value plot on the chart
-        var valuePlot = chart.plot(0);
-        valuePlot.line(closeMapping).name("Close");
-        valuePlot.grid().enabled(true);
-        valuePlot.minorGrid().enabled(true);
-        valuePlot.legend().titleFormatter(function () {
+        var ohlcPlot = chart.plot(0);
+        var ohlcSeries = ohlcPlot.ohlc(closeMapping).name("ORACLE Intraday");
+        ohlcPlot.grid().enabled(true);
+        ohlcPlot.minorGrid().enabled(true);
+        ohlcPlot.legend().titleFormatter(function () {
             return anychart.format.dateTime(this.value, format, null, locale);
         });
-        valuePlot.legend().itemsTextFormatter(function () {
+        ohlcPlot.legend().itemsTextFormatter(function () {
             return anychart.format.number(this.value, locale);
+        });
+        ohlcSeries.tooltip().textFormatter(function () {
+            return 'Open: ' + anychart.format.number(this.open, locale) + '\n' +
+                'High: ' + anychart.format.number(this.high, locale) + '\n' +
+                'Low: ' + anychart.format.number(this.low, locale) + '\n' +
+                'Close: ' + anychart.format.number(this.close, locale);
         });
 
         // create volume plot on the chart
         var volumePlot = chart.plot(1);
-        volumePlot.column(volumeMapping).name("Volume");
+        var volumeSeries = volumePlot.column(volumeMapping).name("Volume");
         volumePlot.height('30%');
         volumePlot.legend().titleFormatter(function () {
             return anychart.format.dateTime(this.value, format, null, locale);
@@ -259,14 +265,8 @@
         volumePlot.legend().itemsTextFormatter(function () {
             return anychart.format.number(this.value, locale);
         });
-
-        chart.tooltip().titleFormatter(function () {
-            return anychart.format.dateTime(this.hoveredDate, format, null, locale);
-        });
-
-        chart.tooltip().textFormatter(function () {
-            return 'Close: ' + anychart.format.number(eval(this.formattedValues[0]), locale) + '\n' +
-                'Volume: ' + anychart.format.number(eval(this.formattedValues[1]), locale);
+        volumeSeries.tooltip().textFormatter(function () {
+            return 'Volume: ' + anychart.format.number(this.value, locale);
         });
 
         // create scroller series with mapped data
