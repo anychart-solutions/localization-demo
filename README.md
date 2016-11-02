@@ -16,8 +16,7 @@ It is an irreplaceable tool for a developer; it provides all the country and lan
 ## AnyGantt
 [<img src="http://static.anychart.com/images/github/anygantt-localization.png" alt="AnyGantt Localization and Date-Time Formatting Utility">](http://anychart.com/products/anygantt/demos/localization/)
 
-## Links
-* [Localization Demo at AnyChart.Com](https://www.anychart.com/products/anychart/demos/localization/)
+## Further Learning
 * [Documentation](https://docs.anychart.com)
 * [JavaScript API Reference](https://api.anychart.com)
 * [Code Playground](https://playground.anychart.com)

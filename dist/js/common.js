@@ -208,6 +208,8 @@
     }
 
     function createChart(container, locale, format) {
+        var timeZoneOffset = new Date().getTimezoneOffset();
+
         var data = [
             ['Jan 2015', 22, 43, 75],
             ['Feb 2015', 34, 45, 56],
@@ -224,8 +226,8 @@
         ];
 
         var _title = 'ACME corp. Problems During the Year\n' + 'From: ' +
-            anychart.format.dateTime(data[0][0], format, -8 * 60, locale) +
-            '\nTo: ' + anychart.format.dateTime(data[data.length - 1][0], format, -8 * 60, locale);
+            anychart.format.dateTime(data[0][0], format, timeZoneOffset, locale) +
+            '\nTo: ' + anychart.format.dateTime(data[data.length - 1][0], format, timeZoneOffset, locale);
 
         // Set a localization for output.
         anychart.format.outputLocale(locale);
@@ -285,10 +287,10 @@
         chart.legend().enabled(true).padding([0, 0, 10, 0]);
 
         chart.xAxis().labels().textFormatter(function () {
-            return anychart.format.dateTime(this.value, 'MMM', -8 * 60, locale);
+            return anychart.format.dateTime(this.value, 'MMM', timeZoneOffset, locale);
         });
         chart.tooltip().titleFormatter(function () {
-            return anychart.format.dateTime(this.points[0].x, format, -8 * 60, locale);
+            return anychart.format.dateTime(this.points[0].x, format, timeZoneOffset, locale);
         });
 
         chart.tooltip().unionTextFormatter(function () {
