@@ -5,6 +5,7 @@
     var data = serverStatusData();
     var $date_pattern = $('.date-pattern');
     var default_format = 'EEEE, dd MMMM yyyy';
+    var timeZoneOffset = new Date().getTimezoneOffset();
     formats = {};
 
     function hidePreloader() {
@@ -200,7 +201,7 @@
     function changeInputFormat(format, flag) {
         var locale = anychart.format.outputLocale();
         var date = new Date();
-        var pattern = anychart.format.dateTime(date, format, -8 * 60, locale);
+        var pattern = anychart.format.dateTime(date, format, timeZoneOffset, locale);
 
         if (flag === undefined) {
             $('.format-input').val(pattern);
