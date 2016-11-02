@@ -223,7 +223,6 @@
         var dataTable = anychart.data.table();
         dataTable.addData(data);
 
-        debugger;
         var _title = 'ORACLE Intraday\n' + 'From: ' +
             anychart.format.dateTime(data[0][0], format, timeZoneOffset, locale) +
             '\nTo: ' + anychart.format.dateTime(data[data.length - 1][0], format, timeZoneOffset, locale);
