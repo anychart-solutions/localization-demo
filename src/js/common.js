@@ -4,6 +4,7 @@
     var chart_container = 'map-chart';
     var $date_pattern = $('.date-pattern');
     var default_format = 'EEEE, dd MMMM yyy';
+    var timeZoneOffset = new Date().getTimezoneOffset();
     formats = {};
 
     function hidePreloader() {
@@ -199,7 +200,7 @@
     function changeInputFormat(format, flag) {
         var locale = anychart.format.outputLocale();
         var date = new Date();
-        var pattern = anychart.format.dateTime(date, format, -8 * 60, locale);
+        var pattern = anychart.format.dateTime(date, format,timeZoneOffset, locale);
 
         if (flag === undefined) {
             $('.format-input').val(pattern);
@@ -285,8 +286,8 @@
         var dataSet = anychart.data.set(data);
 
         var _title = 'Strongest Earthquakes by Country\n' + 'From: ' +
-            anychart.format.dateTime(data[0]['date'], format, -8 * 60, locale) +
-            '\nTo: ' + anychart.format.dateTime(data[data.length - 1][['date']], format, -8 * 60, locale);
+            anychart.format.dateTime(data[0]['date'], format, timeZoneOffset, locale) +
+            '\nTo: ' + anychart.format.dateTime(data[data.length - 1][['date']], format, timeZoneOffset, locale);
 
         // creates Map Chart
         map = anychart.map();
@@ -336,10 +337,10 @@
             if (this.getDataValue('description') != '')
                 return span_for_value + this.size + 'M </span></strong>'
                     + span_for_description + this.getDataValue('description') + '"</span>'
-                    + span_for_date + anychart.format.dateTime(this.getDataValue('date'), format, -8 * 60, locale) + '</span>';
+                    + span_for_date + anychart.format.dateTime(this.getDataValue('date'), format, timeZoneOffset, locale) + '</span>';
             else
                 return span_for_value + this.size + 'M </span></strong>'
-                    + span_for_date + anychart.format.dateTime(this.getDataValue('date'), format, -8 * 60, locale) + '</span>';
+                    + span_for_date + anychart.format.dateTime(this.getDataValue('date'), format, timeZoneOffset, locale) + '</span>';
         });
 
         // set container id for the chart
