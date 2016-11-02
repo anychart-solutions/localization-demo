@@ -8,6 +8,7 @@
     var chart_container = 'intraday-chart';
     var $date_pattern = $('.date-pattern');
     var default_format = 'EEEE, dd MMMM yyyy';
+    var timeZoneOffset = new Date().getTimezoneOffset();
     formats = {};
 
     function hidePreloader() {
@@ -206,7 +207,7 @@
     function changeInputFormat(format, flag) {
         var locale = anychart.format.outputLocale();
         var date = new Date();
-        var pattern = anychart.format.dateTime(date, format, -8 * 60, locale);
+        var pattern = anychart.format.dateTime(date, format, timeZoneOffset, locale);
 
         if (flag === undefined) {
             $('.format-input').val(pattern);
@@ -223,8 +224,8 @@
         dataTable.addData(data);
 
         var _title = 'ORACLE Intraday\n' + 'From: ' +
-            anychart.format.dateTime(data[0][0], format, -8 * 60, locale) +
-            '\nTo: ' + anychart.format.dateTime(data[data.length - 1][0], format, -8 * 60, locale);
+            anychart.format.dateTime(data[0][0], format, timeZoneOffset, locale) +
+            '\nTo: ' + anychart.format.dateTime(data[data.length - 1][0], format, timeZoneOffset, locale);
 
         // map loaded data
         var closeMapping = dataTable.mapAs({'open': 1, 'high': 2, 'low': 3, 'close': 4});
