@@ -4,6 +4,7 @@
     var chart_container = 'acme-chart';
     var $date_pattern = $('.date-pattern');
     var default_format = 'EEEE, dd MMMM yyyy';
+    var timeZoneOffset = new Date().getTimezoneOffset();
     formats = {};
 
     function hidePreloader() {
@@ -198,7 +199,7 @@
     function changeInputFormat(format, flag) {
         var locale = anychart.format.outputLocale();
         var date = new Date();
-        var pattern = anychart.format.dateTime(date, format, -8 * 60, locale);
+        var pattern = anychart.format.dateTime(date, format, timeZoneOffset, locale);
 
         if (flag === undefined) {
             $('.format-input').val(pattern);
@@ -208,8 +209,6 @@
     }
 
     function createChart(container, locale, format) {
-        var timeZoneOffset = new Date().getTimezoneOffset();
-
         var data = [
             ['Jan 2015', 22, 43, 75],
             ['Feb 2015', 34, 45, 56],
