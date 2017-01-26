@@ -9,3 +9,9 @@
     margin-bottom: 25px;
   }
 }
+
+@media screen and (max-width: 992px) {
+  .dashboard-content .chart-container .tab-pane {
+    height: 450px;
+  }
+}
