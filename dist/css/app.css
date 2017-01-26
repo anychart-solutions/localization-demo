@@ -291,3 +291,11 @@ h1.title {
 @media screen and (min-width: 768px) {
   .preview-container {
     margin-bottom: 25px; } }
+
+@media screen and (max-width: 992px) {
+  .dashboard-content .chart-container .tab-pane {
+    height: 450px; } }
+
+@media screen and (max-width: 450px) {
+  .dashboard-content .chart-container .tab-pane {
+    height: 350px; } }
