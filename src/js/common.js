@@ -304,32 +304,17 @@
     });
 
     $(window).on('load', function () {
-        placeBlocks();
         hidePreloader();
-    });
-
-    $(window).on('resize', function () {
-        placeBlocks();
     });
 
     function scrollPosition() {
         var $language_locale = $('.language-locale');
-        var top = $language_locale.find('.active').offset().top -
+        var top = $language_locale.find('.active').position().top -
             $language_locale.height() / 2 + $language_locale.find('.active').height() / 2;
 
         $language_locale.animate({
             scrollTop: top
         }, 500);
-    }
-
-    function placeBlocks() {
-        var mq = window.matchMedia('(max-width: 768px)');
-
-        if (mq.matches) {
-            $('.preview-container').detach().insertAfter('.tables-container');
-        } else {
-            $('.tables-container').detach().insertAfter('.preview-container');
-        }
     }
 
     /* Prism copy to clipbaord */
