@@ -51,7 +51,60 @@
 <div class="wrapper">
     <div class="container dashboard-content">
         <div class="row">
-            <div class="col-lg-8 col-sm-12 preview-container">
+            <div class="col-lg-4 col-lg-push-8 col-sm-12 tables-container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="bs-callout bs-callout-info bs-callout-border-default">
+                            <h4>Select Language:</h4>
+
+                            <div class="table-responsive language-locale">
+                                <table class="table table-hover">
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="bs-callout bs-callout-info bs-callout-border-default">
+                            <h4>Date Time Format Pattern:</h4>
+
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a data-toggle="tab" href="#select-preset">Select Preset</a></li>
+                                <li><a data-toggle="tab" href="#custom-format">Custom</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div id="select-preset" class="tab-pane fade in active select-preset">
+                                    <div class="table-responsive date-pattern">
+                                        <table class="table table-hover">
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="format">Format:</label>
+                                        <input class="form-control format-pattern-input" type="text" id="format" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="example-format">Example:</label>
+                                        <input class="form-control format-input" type="text" id="example-format" readonly>
+                                    </div>
+                                </div>
+                                <div id="custom-format" class="tab-pane fade custom-format">
+                                    <div class="form-group">
+                                        <label for="custom-format-input">Format:</label>
+                                        <input class="form-control format-pattern-input" type="text" id="custom-format-input">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="custom-example-format-input">Example:</label>
+                                        <input class="form-control format-input" type="text" id="custom-example-format-input" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8 col-lg-pull-4 col-sm-12 preview-container">
                 <div class="bs-callout bs-callout-info chart-container">
                     <h4>AnyMap</h4>
 
@@ -92,59 +145,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-sm-12 tables-container">
-                <div class="row">
-                    <div class="col-lg-12 col-sm-6 col-xs-12">
-                        <div class="bs-callout bs-callout-info bs-callout-border-default">
-                            <h4>Select Language:</h4>
-
-                            <div class="table-responsive language-locale">
-                                <table class="table table-hover">
-                                    <tbody></tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12 col-sm-6 col-xs-12">
-                        <div class="bs-callout bs-callout-info bs-callout-border-default">
-                            <h4>Date Time Format Pattern:</h4>
-
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a data-toggle="tab" href="#select-preset">Select Preset</a></li>
-                                <li><a data-toggle="tab" href="#custom-format">Custom</a></li>
-                            </ul>
-
-                            <div class="tab-content">
-                                <div id="select-preset" class="tab-pane fade in active select-preset">
-                                    <div class="table-responsive date-pattern">
-                                        <table class="table table-hover">
-                                            <tbody></tbody>
-                                        </table>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="format">Format:</label>
-                                        <input class="form-control format-pattern-input" type="text" id="format" readonly>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="example-format">Example:</label>
-                                        <input class="form-control format-input" type="text" id="example-format" readonly>
-                                    </div>
-                                </div>
-                                <div id="custom-format" class="tab-pane fade custom-format">
-                                    <div class="form-group">
-                                        <label for="custom-format-input">Format:</label>
-                                        <input class="form-control format-pattern-input" type="text" id="custom-format-input">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="custom-example-format-input">Example:</label>
-                                        <input class="form-control format-input" type="text" id="custom-example-format-input" readonly>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
@@ -154,6 +154,7 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="http://cdn.anychart.com/geodata/1.2.0/custom/world/world.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
 <script src="https://cdn.anychart.com/js/7.12.0/anychart-bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js"></script>
 <script src="dist/js/plugins/prism/prism.min.js"></script>

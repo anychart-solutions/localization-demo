@@ -200,7 +200,7 @@
     function changeInputFormat(format, flag) {
         var locale = anychart.format.outputLocale();
         var date = new Date();
-        var pattern = anychart.format.dateTime(date, format,timeZoneOffset, locale);
+        var pattern = anychart.format.dateTime(date, format, timeZoneOffset, locale);
 
         if (flag === undefined) {
             $('.format-input').val(pattern);
@@ -227,10 +227,22 @@
             {id: "CA", name: "Canada", size: 8.9, date: '26 January 1700', description: 'Cascadia earthquake'},
             {id: "CN", name: "China", size: 8.6, date: '15 August 1950', description: 'Assam–Tibet earthquake'},
             {id: "CL", name: "Chile", size: 9.5, date: '22 May 1960', description: 'Valdivia earthquake'},
-            {id: "CO", name: "Colombia", size: 8.8, date: '31 January 1906', description: 'Ecuador–Colombia earthquake'},
+            {
+                id: "CO",
+                name: "Colombia",
+                size: 8.8,
+                date: '31 January 1906',
+                description: 'Ecuador–Colombia earthquake'
+            },
             {id: "CU", name: "Cuba", size: 6.8, date: '11 June 1766', description: ''},
             {id: "DK", name: "Denmark", size: 4.3, date: '16 December 2008', description: ''},
-            {id: "DO", name: "Dominican Republic", size: 8.1, date: '4 August 1946', description: 'Dominican Republic earthquake'},
+            {
+                id: "DO",
+                name: "Dominican Republic",
+                size: 8.1,
+                date: '4 August 1946',
+                description: 'Dominican Republic earthquake'
+            },
             {id: "EC", name: "Ecuador", size: 8.8, date: '31 January 1906', description: 'Ecuador–Colombia earthquake'},
             {id: "EG", name: "Egypt", size: 7.3, date: '22 November 1995', description: 'Gulf of Aqaba earthquake'},
             {id: "EE", name: "Estonia", size: 4.5, date: '25 October 1976', description: ''},
@@ -278,7 +290,7 @@
             {id: "VN", name: "Vietnam", size: 6.8, date: '24 June 1983', description: 'Tuan Giao earthquake'}
         ];
 
-        data.sort(function (a,b) {
+        data.sort(function (a, b) {
             return new Date(a['date']).getTime() - new Date(b['date']).getTime();
         });
 
@@ -365,31 +377,16 @@
     });
 
     $(window).on('load', function () {
-        placeBlocks();
         hidePreloader();
-    });
-
-    $(window).on('resize', function () {
-        placeBlocks();
     });
 
     function scrollPosition() {
         var $language_locale = $('.language-locale');
-        var top = $language_locale.find('.active').offset().top - $language_locale.height() / 2 + $language_locale.find('.active').height() / 2;
+        var top = $language_locale.find('.active').position().top - $language_locale.height() / 2 + $language_locale.find('.active').height() / 2;
 
         $language_locale.animate({
             scrollTop: top
         }, 500);
-    }
-
-    function placeBlocks() {
-        var mq = window.matchMedia('(max-width: 768px)');
-
-        if (mq.matches) {
-            $('.preview-container').detach().insertAfter('.tables-container');
-        } else {
-            $('.tables-container').detach().insertAfter('.preview-container');
-        }
     }
 
     /* Prism copy to clipbaord */
