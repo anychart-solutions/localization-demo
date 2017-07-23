@@ -125,7 +125,7 @@
             '\t\tvar locale = "' + locale + '";\n\t\t' + code_func + '\n\t\t});';
         var doc = '<!DOCTYPE html>\n<html lang="en">\n<head>' +
             '\n\t<meta charset="utf-8" />' +
-            '\n\t<script src="http://anychart.stg/products/anygantt/demos/localization/repo/anychart-bundle.min.js"></script>' +
+            '\n\t<script src="https://cdn.anychart.com/js/7.12.0/anychart-bundle.min.js"></script>' +
             '\n\t<script src="' + 'https://cdn.anychart.com/locale/1.1.0/' + locale + '.js"></script>' +
             '\n</head>\n<body>' +
             '\n\t<div id="container" style="width: 850px; height: 600px; margin: 0 auto;"></div>' +
@@ -245,9 +245,11 @@
         // create line chart
         chart = anychart.line();
         // turn on the crosshair and tune it
-        chart.crosshair().enabled(true).yLabel().enabled(false);
-        chart.crosshair().enabled(true).xLabel().enabled(false);
-        chart.crosshair().enabled(true).yStroke(null);
+        chart.crosshair()
+            .enabled(true)
+            .yLabel(false)
+            .xLabel(false)
+            .yStroke(null);
         // disable one of the chart grids
         chart.grid(0).enabled(false);
         // set chart title text settings
