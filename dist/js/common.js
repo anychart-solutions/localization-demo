@@ -128,11 +128,12 @@
         var code = 'anychart.onDocumentReady(function () {\n\t\tvar format ="' + format + '";\n\t\t' +
             'var locale = "' + locale + '";\n\t\t' +
             'var data = get_orcl_intraday_data();\n\t\t' +
+            'var timeZoneOffset = new Date().getTimezoneOffset();\n\t\t' +
             'var range = [\'Mon Jun 29 2009 22:25:18\', \'Thu Jul 02 2009 22:11:19\'];\n\t\t' +
             code_func + '\n\t\t});';
         var doc = '<!DOCTYPE html>\n<html lang="en">\n<head>' +
             '\n\t<meta charset="utf-8" />' +
-            '\n\t<script src="http://anychart.com/products/anygantt/demos/localization/repo/anychart-bundle.min.js"></script>' +
+            '\n\t<script src="https://cdn.anychart.com/js/7.12.0/anychart-bundle.min.js"></script>' +
             '\n\t<script src="http://cdn.anychart.com/csv-data/orcl-intraday.js"></script>' +
             '\n\t<script src="' + 'https://cdn.anychart.com/locale/1.1.0/' + locale + '.js"></script>' +
             '\n</head>\n<body>' +
