@@ -121,12 +121,15 @@
             .replace('function createChart(container, locale, format) {', '')
             .replace(/}$/, '')
             .trim();
-        var code = 'anychart.onDocumentReady(function () {\n\t\tvar format ="' + format + '";\n' +
-            '\t\tvar locale = "' + locale + '";\n\t\t' + code_func + '\n\t\t});';
+        var code = 'anychart.onDocumentReady(function () {' +
+            '\n\t\tvar format ="' + format + '";\n' +
+            '\t\tvar locale = "' + locale + '";\n' +
+            '\t\tvar timeZoneOffset = new Date().getTimezoneOffset();\n\t\t' +
+            code_func + '\n\t\t});';
         var doc = '<!DOCTYPE html>\n<html lang="en">\n<head>' +
             '\n\t<meta charset="utf-8" />' +
             '\n\t<script src="http://cdn.anychart.com/geodata/1.2.0/custom/world/world.js"></script>' +
-            '\n\t<script src="http://anychart.stg/products/anygantt/demos/localization/repo/anychart-bundle.min.js"></script>' +
+            '\n\t<script src="https://cdn.anychart.com/js/7.12.0/anychart-bundle.min.js"></script>' +
             '\n\t<script src="' + 'https://cdn.anychart.com/locale/1.1.0/' + locale + '.js"></script>' +
             '\n</head>\n<body>' +
             '\n\t<div id="container" style="width: 850px; height: 600px; margin: 0 auto;"></div>' +
@@ -227,22 +230,10 @@
             {id: "CA", name: "Canada", size: 8.9, date: '26 January 1700', description: 'Cascadia earthquake'},
             {id: "CN", name: "China", size: 8.6, date: '15 August 1950', description: 'Assam–Tibet earthquake'},
             {id: "CL", name: "Chile", size: 9.5, date: '22 May 1960', description: 'Valdivia earthquake'},
-            {
-                id: "CO",
-                name: "Colombia",
-                size: 8.8,
-                date: '31 January 1906',
-                description: 'Ecuador–Colombia earthquake'
-            },
+            {id: "CO", name: "Colombia", size: 8.8, date: '31 January 1906', description: 'Ecuador–Colombia earthquake'},
             {id: "CU", name: "Cuba", size: 6.8, date: '11 June 1766', description: ''},
             {id: "DK", name: "Denmark", size: 4.3, date: '16 December 2008', description: ''},
-            {
-                id: "DO",
-                name: "Dominican Republic",
-                size: 8.1,
-                date: '4 August 1946',
-                description: 'Dominican Republic earthquake'
-            },
+            {id: "DO", name: "Dominican Republic", size: 8.1, date: '4 August 1946', description: 'Dominican Republic earthquake'},
             {id: "EC", name: "Ecuador", size: 8.8, date: '31 January 1906', description: 'Ecuador–Colombia earthquake'},
             {id: "EG", name: "Egypt", size: 7.3, date: '22 November 1995', description: 'Gulf of Aqaba earthquake'},
             {id: "EE", name: "Estonia", size: 4.5, date: '25 October 1976', description: ''},
