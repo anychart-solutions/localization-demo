@@ -247,9 +247,11 @@
         // create line chart
         chart = anychart.line();
         // turn on the crosshair and tune it
-        chart.crosshair().enabled(true).yLabel().enabled(false);
-        chart.crosshair().enabled(true).xLabel().enabled(false);
-        chart.crosshair().enabled(true).yStroke(null);
+        chart.crosshair()
+            .enabled(true)
+            .yLabel(false)
+            .xLabel(false)
+            .yStroke(null);
         // disable one of the chart grids
         chart.grid(0).enabled(false);
         // set chart title text settings
