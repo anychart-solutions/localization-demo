@@ -230,7 +230,6 @@ h1.title {
 
 .language-locale td,
 .date-pattern td {
-  -webkit-transition: all .2s;
   transition: all .2s; }
   .language-locale td:first-child,
   .date-pattern td:first-child {
