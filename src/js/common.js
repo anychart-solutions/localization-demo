@@ -243,13 +243,13 @@
         var ohlcSeries = ohlcPlot.ohlc(closeMapping).name("ORACLE Intraday");
         ohlcPlot.grid().enabled(true);
         ohlcPlot.minorGrid().enabled(true);
-        ohlcPlot.legend().itemsTextFormatter(function () {
+        ohlcPlot.legend().itemsFormat(function () {
             return 'O: ' + anychart.format.number(this.open, locale) + '; ' +
                 'H: ' + anychart.format.number(this.high, locale) + '; ' +
                 'L: ' + anychart.format.number(this.low, locale) + '; ' +
                 'C: ' + anychart.format.number(this.close, locale);
         });
-        ohlcSeries.tooltip().textFormatter(function () {
+        ohlcSeries.tooltip().format(function () {
             return 'Open: ' + anychart.format.number(this.open, locale) + '\n' +
                 'High: ' + anychart.format.number(this.high, locale) + '\n' +
                 'Low: ' + anychart.format.number(this.low, locale) + '\n' +
@@ -260,10 +260,10 @@
         var volumePlot = chart.plot(1);
         var volumeSeries = volumePlot.column(volumeMapping).name("Volume");
         volumePlot.height('30%');
-        volumePlot.legend().itemsTextFormatter(function () {
+        volumePlot.legend().itemsFormat(function () {
             return anychart.format.number(this.value, locale);
         });
-        volumeSeries.tooltip().textFormatter(function () {
+        volumeSeries.tooltip().format(function () {
             return 'Volume: ' + anychart.format.number(this.value, locale);
         });
 
