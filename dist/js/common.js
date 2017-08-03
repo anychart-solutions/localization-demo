@@ -289,18 +289,16 @@
         // turn the legend on
         chart.legend().enabled(true).padding([0, 0, 10, 0]);
 
-        chart.xAxis().labels().textFormatter(function () {
+        chart.xAxis().labels().format(function () {
             return anychart.format.dateTime(this.value, 'MMM', timeZoneOffset, locale);
         });
-        chart.tooltip().titleFormatter(function () {
+
+        chart.tooltip().titleFormat(function () {
             return anychart.format.dateTime(this.points[0].x, format, timeZoneOffset, locale);
         });
 
-        chart.tooltip().unionTextFormatter(function () {
-            return this.points[0].seriesName + ': ' + this.points[0].value +
-                '\n' + this.points[1].seriesName + ': ' + this.points[1].value +
-                '\n' + this.points[2].seriesName + ': ' + this.points[2].value;
-        });
+        chart.tooltip().displayMode('union');
+        
         // set container id for the chart
         chart.container(container);
         // initiate chart drawing
