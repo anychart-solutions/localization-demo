@@ -305,7 +305,7 @@
 
         // sets Chart Title
         map.title().text(_title).enabled(true).padding([20, 0, 0, 0]);
-        map.allowPointsSelect(false);
+        map.interactivity().selectionMode(false);
         // sets bubble max size settings
         map.minBubbleSize(3);
         map.maxBubbleSize(15);
@@ -329,21 +329,18 @@
         series.tooltip(tooltipSettings);
         series.tooltip().textWrap('byLetter').useHtml(true);
         series.tooltip().title().fontColor('#7c868e');
-        series.tooltip().titleFormatter(function () {
-            return this.name
-        });
 
-        series.tooltip().textFormatter(function () {
+        series.tooltip().format(function () {
             var span_for_value = '<span style="color: #545f69; font-size: 12px; font-weight: bold">';
             var span_for_date = '<br/><span style="color: #7c868e; font-size: 11px">';
             var span_for_description = '<br/><span style="color: #7c868e; font-size: 12px; font-style: italic">"';
-            if (this.getDataValue('description') != '')
+            if (this.getData('description') != '')
                 return span_for_value + this.size + 'M </span></strong>'
-                    + span_for_description + this.getDataValue('description') + '"</span>'
-                    + span_for_date + anychart.format.dateTime(this.getDataValue('date'), format, timeZoneOffset, locale) + '</span>';
+                    + span_for_description + this.getData('description') + '"</span>'
+                    + span_for_date + anychart.format.dateTime(this.getData('date'), format, timeZoneOffset, locale) + '</span>';
             else
                 return span_for_value + this.size + 'M </span></strong>'
-                    + span_for_date + anychart.format.dateTime(this.getDataValue('date'), format, timeZoneOffset, locale) + '</span>';
+                    + span_for_date + anychart.format.dateTime(this.getData('date'), format, timeZoneOffset, locale) + '</span>';
         });
 
         // set container id for the chart
