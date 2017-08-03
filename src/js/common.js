@@ -133,7 +133,7 @@
             code_func + '\n\t\t});';
         var doc = '<!DOCTYPE html>\n<html lang="en">\n<head>' +
             '\n\t<meta charset="utf-8" />' +
-            '\n\t<script src="https://cdn.anychart.com/js/7.12.0/anychart-bundle.min.js"></script>' +
+            '\n\t<script src="https://cdn.anychart.com/js/7.14.3/anychart-bundle.min.js"></script>' +
             '\n\t<script src="http://cdn.anychart.com/csv-data/orcl-intraday.js"></script>' +
             '\n\t<script src="' + 'https://cdn.anychart.com/locale/1.1.0/' + locale + '.js"></script>' +
             '\n</head>\n<body>' +
