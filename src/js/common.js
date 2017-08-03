@@ -129,7 +129,7 @@
             code_func + '\n\t\t});';
         var doc = '<!DOCTYPE html>\n<html lang="en">\n<head>' +
             '\n\t<meta charset="utf-8" />' +
-            '\n\t<script src="https://cdn.anychart.com/js/7.12.0/anychart-bundle.min.js"></script>' +
+            '\n\t<script src="https://cdn.anychart.com/js/7.14.3/anychart-bundle.min.js"></script>' +
             '\n\t<script src="' + 'https://cdn.anychart.com/locale/1.1.0/' + locale + '.js"></script>' +
             '\n\t<script src="http://anychart.com/products/anygantt/demos/localization/repo/data.js"></script>' +
             '\n</head>\n<body>' +
@@ -237,7 +237,7 @@
         firstColumn.title('Server');
         firstColumn.width(110);
         firstColumn.cellTextSettings().hAlign('left');
-        firstColumn.textFormatter(function (item) {
+        firstColumn.format(function (item) {
             return item.get('name');
         });
         firstColumn.cellTextSettingsOverrider(labelTextSettingsOverrider);
@@ -247,7 +247,7 @@
         secondColumn.title('Online');
         secondColumn.width(60);
         secondColumn.cellTextSettings().hAlign('right');
-        secondColumn.textFormatter(function (item) {
+        secondColumn.format(function (item) {
             return item.get('online') || '';
         });
         secondColumn.cellTextSettingsOverrider(labelTextSettingsOverrider);
@@ -257,7 +257,7 @@
         thirdColumn.title('Maintenance');
         thirdColumn.width(60);
         thirdColumn.cellTextSettings().hAlign('right');
-        thirdColumn.textFormatter(function (item) {
+        thirdColumn.format(function (item) {
             return item.get('maintenance') || '';
         });
         thirdColumn.cellTextSettingsOverrider(labelTextSettingsOverrider);
@@ -267,7 +267,7 @@
         fourthColumn.title('Offline');
         fourthColumn.width(60);
         fourthColumn.cellTextSettings().hAlign('right');
-        fourthColumn.textFormatter(function (item) {
+        fourthColumn.format(function (item) {
             return item.get('offline') || '';
         });
         fourthColumn.cellTextSettingsOverrider(labelTextSettingsOverrider);
