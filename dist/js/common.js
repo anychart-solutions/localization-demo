@@ -127,7 +127,7 @@
             code_func + '\n\t\t});';
         var doc = '<!DOCTYPE html>\n<html lang="en">\n<head>' +
             '\n\t<meta charset="utf-8" />' +
-            '\n\t<script src="https://cdn.anychart.com/js/7.12.0/anychart-bundle.min.js"></script>' +
+            '\n\t<script src="https://cdn.anychart.com/js/7.14.3/anychart-bundle.min.js"></script>' +
             '\n\t<script src="' + 'https://cdn.anychart.com/locale/1.1.0/' + locale + '.js"></script>' +
             '\n</head>\n<body>' +
             '\n\t<div id="container" style="width: 850px; height: 600px; margin: 0 auto;"></div>' +
@@ -298,11 +298,6 @@
 
         chart.tooltip().displayMode('union');
 
-      /*  chart.tooltip().unionFormat(function () {
-            return this.seriesName + ': ' + this.points[0].value +
-                '\n' + this.points[1].seriesName + ': ' + this.points[1].value +
-                '\n' + this.points[2].seriesName + ': ' + this.points[2].value;
-        });*/
         // set container id for the chart
         chart.container(container);
         // initiate chart drawing
