@@ -2,7 +2,7 @@
     var chart;
     var range = ['Mon Jun 29 2009 22:25:18', 'Thu Jul 02 2009 22:11:19'];
     // The data that have been used for this sample can be taken from the CDN
-    // http://cdn.anychart.com/csv-data/orcl-intraday.js
+    // https://cdn.anychart.com/csv-data/orcl-intraday.js
     var orcl_intraday_data = get_orcl_intraday_data();
     var product = $('body').data('product');
     var chart_container = 'intraday-chart';
@@ -24,7 +24,7 @@
 
     function getLocaleText() {
         $.ajax({
-            url: 'http://cdn.anychart.com/locale/1.1.0/index.json',
+            url: 'https://cdn.anychart.com/locale/1.1.0/index.json',
             success: function (json) {
                 var data = json;
                 var $table = $('.language-locale').find('tbody');
@@ -134,7 +134,7 @@
         var doc = '<!DOCTYPE html>\n<html lang="en">\n<head>' +
             '\n\t<meta charset="utf-8" />' +
             '\n\t<script src="https://cdn.anychart.com/js/7.14.3/anychart-bundle.min.js"></script>' +
-            '\n\t<script src="http://cdn.anychart.com/csv-data/orcl-intraday.js"></script>' +
+            '\n\t<script src="https://cdn.anychart.com/csv-data/orcl-intraday.js"></script>' +
             '\n\t<script src="' + 'https://cdn.anychart.com/locale/1.1.0/' + locale + '.js"></script>' +
             '\n</head>\n<body>' +
             '\n\t<div id="container" style="width: 850px; height: 600px; margin: 0 auto;"></div>' +
