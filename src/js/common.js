@@ -21,7 +21,7 @@
 
     function getLocaleText() {
         $.ajax({
-            url: 'http://cdn.anychart.com/locale/1.1.0/index.json',
+            url: 'https://cdn.anychart.com/locale/1.1.0/index.json',
             success: function (json) {
                 var data = json;
                 var $table = $('.language-locale').find('tbody');
