@@ -20,7 +20,7 @@
 
     function getLocaleText() {
         $.ajax({
-            url: 'http://cdn.anychart.com/locale/1.1.0/index.json',
+            url: 'https://cdn.anychart.com/locale/1.1.0/index.json',
             success: function (json) {
                 var data = json;
                 var $table = $('.language-locale').find('tbody');
@@ -128,7 +128,7 @@
             code_func + '\n\t\t});';
         var doc = '<!DOCTYPE html>\n<html lang="en">\n<head>' +
             '\n\t<meta charset="utf-8" />' +
-            '\n\t<script src="http://cdn.anychart.com/geodata/1.2.0/custom/world/world.js"></script>' +
+            '\n\t<script src="https://cdn.anychart.com/geodata/1.2.0/custom/world/world.js"></script>' +
             '\n\t<script src="https://cdn.anychart.com/js/7.14.3/anychart-bundle.min.js"></script>' +
             '\n\t<script src="' + 'https://cdn.anychart.com/locale/1.1.0/' + locale + '.js"></script>' +
             '\n</head>\n<body>' +
@@ -294,7 +294,7 @@
 
         // creates Map Chart
         map = anychart.map();
-        // sets geodata using http://cdn.anychart.com/geodata/world/world.js
+        // sets geodata using https://cdn.anychart.com/geodata/world/world.js
         map.geoData(anychart.maps.world);
 
         var credits = map.credits();
