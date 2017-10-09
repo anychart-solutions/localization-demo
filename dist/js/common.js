@@ -284,13 +284,13 @@
         data.sort(function (a, b) {
             return new Date(a['date']).getTime() - new Date(b['date']).getTime();
         });
-
+        
         // creates data set
         var dataSet = anychart.data.set(data);
 
         var _title = 'Strongest Earthquakes by Country\n' + 'From: ' +
-            anychart.format.dateTime(data[0]['date'], format, timeZoneOffset, locale) +
-            '\nTo: ' + anychart.format.dateTime(data[data.length - 1][['date']], format, timeZoneOffset, locale);
+            anychart.format.dateTime(data[0].date, format, timeZoneOffset, locale) +
+            '\nTo: ' + anychart.format.dateTime(data[data.length - 1].date, format, timeZoneOffset, locale);
 
         // creates Map Chart
         map = anychart.map();
