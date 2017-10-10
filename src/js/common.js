@@ -128,7 +128,7 @@
             code_func + '\n\t\t});';
         var doc = '<!DOCTYPE html>\n<html lang="en">\n<head>' +
             '\n\t<meta charset="utf-8" />' +
-            '\n\t<script src="http://cdn.anychart.com/geodata/1.2.0/custom/world/world.js"></script>' +
+            '\n\t<script src="https://cdn.anychart.com/geodata/1.2.0/custom/world/world.js"></script>' +
             '\n\t<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>' +
             '\n\t<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-map.min.js"></script>' +
             '\n\t<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>' +
