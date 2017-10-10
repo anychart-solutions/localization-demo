@@ -133,11 +133,12 @@
             code_func + '\n\t\t});';
         var doc = '<!DOCTYPE html>\n<html lang="en">\n<head>' +
             '\n\t<meta charset="utf-8" />' +
+            '\n\t<link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css">' +
             '\n\t<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>' +
             '\n\t<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-stock.min.js"></script>' +
             '\n\t<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>' +
             '\n\t<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>' +
-            '\n\t<script src="http://cdn.anychart.com/csv-data/orcl-intraday.js"></script>' +
+            '\n\t<script src="https://cdn.anychart.com/csv-data/orcl-intraday.js"></script>' +
             '\n\t<script src="' + 'https://cdn.anychart.com/locale/1.1.0/' + locale + '.js"></script>' +
             '\n</head>\n<body>' +
             '\n\t<div id="container" style="width: 850px; height: 600px; margin: 0 auto;"></div>' +
