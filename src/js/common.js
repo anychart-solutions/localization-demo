@@ -129,7 +129,10 @@
         var doc = '<!DOCTYPE html>\n<html lang="en">\n<head>' +
             '\n\t<meta charset="utf-8" />' +
             '\n\t<script src="http://cdn.anychart.com/geodata/1.2.0/custom/world/world.js"></script>' +
-            '\n\t<script src="https://cdn.anychart.com/js/7.14.3/anychart-bundle.min.js"></script>' +
+            '\n\t<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>' +
+            '\n\t<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-map.min.js"></script>' +
+            '\n\t<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>' +
+            '\n\t<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>' +
             '\n\t<script src="' + 'https://cdn.anychart.com/locale/1.1.0/' + locale + '.js"></script>' +
             '\n</head>\n<body>' +
             '\n\t<div id="container" style="width: 850px; height: 600px; margin: 0 auto;"></div>' +
@@ -288,7 +291,7 @@
         // creates data set
         var dataSet = anychart.data.set(data);
 
-        var _title = 'Strongest Earthquakes by Country\n' + 'From: ' +
+        var title = 'Strongest Earthquakes by Country\n' + 'From: ' +
             anychart.format.dateTime(data[0].date, format, timeZoneOffset, locale) +
             '\nTo: ' + anychart.format.dateTime(data[data.length - 1].date, format, timeZoneOffset, locale);
 
@@ -304,7 +307,10 @@
         credits.logoSrc('//en.wikipedia.org/static/favicon/wikipedia.ico');
 
         // sets Chart Title
-        map.title().text(_title).enabled(true).padding([20, 0, 0, 0]);
+        map.title()
+            .enabled(true)
+            .text(title)
+            .padding([20, 0, 0, 0]);
         map.interactivity().selectionMode(false);
         // sets bubble max size settings
         map.minBubbleSize(3);
@@ -318,8 +324,9 @@
         series.labels().enabled(false);
         series.fill("#ff8f00 0.6");
         series.stroke("1 #ff6f00 0.9");
-        series.hoverFill("#78909c");
-        series.hoverStroke("1 #546e7a 1");
+        series.hovered()
+            .fill("#78909c")
+            .stroke("1 #546e7a 1");
 
         // sets tooltip
         var tooltipSettings = {
@@ -327,7 +334,7 @@
             padding: [8, 13, 10, 13]
         };
         series.tooltip(tooltipSettings);
-        series.tooltip().textWrap('byLetter').useHtml(true);
+        series.tooltip().useHtml(true);
         series.tooltip().title().fontColor('#7c868e');
 
         series.tooltip().format(function () {
