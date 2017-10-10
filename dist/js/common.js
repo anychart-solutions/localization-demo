@@ -129,7 +129,10 @@
         var doc = '<!DOCTYPE html>\n<html lang="en">\n<head>' +
             '\n\t<meta charset="utf-8" />' +
             '\n\t<script src="https://cdn.anychart.com/geodata/1.2.0/custom/world/world.js"></script>' +
-            '\n\t<script src="https://cdn.anychart.com/js/7.14.3/anychart-bundle.min.js"></script>' +
+            '\n\t<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>' +
+            '\n\t<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-map.min.js"></script>' +
+            '\n\t<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>' +
+            '\n\t<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>' +
             '\n\t<script src="' + 'https://cdn.anychart.com/locale/1.1.0/' + locale + '.js"></script>' +
             '\n</head>\n<body>' +
             '\n\t<div id="container" style="width: 850px; height: 600px; margin: 0 auto;"></div>' +
@@ -203,7 +206,7 @@
     function changeInputFormat(format, flag) {
         var locale = anychart.format.outputLocale();
         var date = new Date();
-        var pattern = anychart.format.dateTime(date, format,timeZoneOffset, locale);
+        var pattern = anychart.format.dateTime(date, format, timeZoneOffset, locale);
 
         if (flag === undefined) {
             $('.format-input').val(pattern);
@@ -230,10 +233,22 @@
             {id: "CA", name: "Canada", size: 8.9, date: '26 January 1700', description: 'Cascadia earthquake'},
             {id: "CN", name: "China", size: 8.6, date: '15 August 1950', description: 'Assam–Tibet earthquake'},
             {id: "CL", name: "Chile", size: 9.5, date: '22 May 1960', description: 'Valdivia earthquake'},
-            {id: "CO", name: "Colombia", size: 8.8, date: '31 January 1906', description: 'Ecuador–Colombia earthquake'},
+            {
+                id: "CO",
+                name: "Colombia",
+                size: 8.8,
+                date: '31 January 1906',
+                description: 'Ecuador–Colombia earthquake'
+            },
             {id: "CU", name: "Cuba", size: 6.8, date: '11 June 1766', description: ''},
             {id: "DK", name: "Denmark", size: 4.3, date: '16 December 2008', description: ''},
-            {id: "DO", name: "Dominican Republic", size: 8.1, date: '4 August 1946', description: 'Dominican Republic earthquake'},
+            {
+                id: "DO",
+                name: "Dominican Republic",
+                size: 8.1,
+                date: '4 August 1946',
+                description: 'Dominican Republic earthquake'
+            },
             {id: "EC", name: "Ecuador", size: 8.8, date: '31 January 1906', description: 'Ecuador–Colombia earthquake'},
             {id: "EG", name: "Egypt", size: 7.3, date: '22 November 1995', description: 'Gulf of Aqaba earthquake'},
             {id: "EE", name: "Estonia", size: 4.5, date: '25 October 1976', description: ''},
@@ -281,16 +296,16 @@
             {id: "VN", name: "Vietnam", size: 6.8, date: '24 June 1983', description: 'Tuan Giao earthquake'}
         ];
 
-        data.sort(function (a,b) {
+        data.sort(function (a, b) {
             return new Date(a['date']).getTime() - new Date(b['date']).getTime();
         });
 
         // creates data set
         var dataSet = anychart.data.set(data);
 
-        var _title = 'Strongest Earthquakes by Country\n' + 'From: ' +
-            anychart.format.dateTime(data[0]['date'], format, timeZoneOffset, locale) +
-            '\nTo: ' + anychart.format.dateTime(data[data.length - 1][['date']], format, timeZoneOffset, locale);
+        var title = 'Strongest Earthquakes by Country\n' + 'From: ' +
+            anychart.format.dateTime(data[0].date, format, timeZoneOffset, locale) +
+            '\nTo: ' + anychart.format.dateTime(data[data.length - 1].date, format, timeZoneOffset, locale);
 
         // creates Map Chart
         map = anychart.map();
@@ -304,7 +319,10 @@
         credits.logoSrc('//en.wikipedia.org/static/favicon/wikipedia.ico');
 
         // sets Chart Title
-        map.title().text(_title).enabled(true).padding([20, 0, 0, 0]);
+        map.title()
+            .enabled(true)
+            .text(title)
+            .padding([20, 0, 0, 0]);
         map.interactivity().selectionMode(false);
         // sets bubble max size settings
         map.minBubbleSize(3);
@@ -318,8 +336,9 @@
         series.labels().enabled(false);
         series.fill("#ff8f00 0.6");
         series.stroke("1 #ff6f00 0.9");
-        series.hoverFill("#78909c");
-        series.hoverStroke("1 #546e7a 1");
+        series.hovered()
+            .fill("#78909c")
+            .stroke("1 #546e7a 1");
 
         // sets tooltip
         var tooltipSettings = {
@@ -327,7 +346,7 @@
             padding: [8, 13, 10, 13]
         };
         series.tooltip(tooltipSettings);
-        series.tooltip().textWrap('byLetter').useHtml(true);
+        series.tooltip().useHtml(true);
         series.tooltip().title().fontColor('#7c868e');
 
         series.tooltip().format(function () {
