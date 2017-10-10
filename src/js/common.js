@@ -133,7 +133,10 @@
             code_func + '\n\t\t});';
         var doc = '<!DOCTYPE html>\n<html lang="en">\n<head>' +
             '\n\t<meta charset="utf-8" />' +
-            '\n\t<script src="https://cdn.anychart.com/js/7.14.3/anychart-bundle.min.js"></script>' +
+            '\n\t<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>' +
+            '\n\t<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-stock.min.js"></script>' +
+            '\n\t<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>' +
+            '\n\t<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>' +
             '\n\t<script src="http://cdn.anychart.com/csv-data/orcl-intraday.js"></script>' +
             '\n\t<script src="' + 'https://cdn.anychart.com/locale/1.1.0/' + locale + '.js"></script>' +
             '\n</head>\n<body>' +
@@ -223,7 +226,7 @@
         // create data table on loaded data
         var dataTable = anychart.data.table();
         dataTable.addData(data);
-        var _title = 'ORACLE Intraday\n' + 'From: ' +
+        var title = 'ORACLE Intraday\n' + 'From: ' +
             anychart.format.dateTime(data[0][0], format, timeZoneOffset, locale) +
             '\nTo: ' + anychart.format.dateTime(data[data.length - 1][0], format, timeZoneOffset, locale);
 
@@ -233,16 +236,17 @@
 
         // create stock chart
         chart = anychart.stock();
-        chart.padding().left('70px');
-        chart.padding().top('20px');
+        chart.padding()
+            .left(70)
+            .top(20);
         // set chart title text settings
-        chart.title(_title).padding([20, 0, 10, 0]);
+        chart.title(title);
 
         // create value plot on the chart
         var ohlcPlot = chart.plot(0);
         var ohlcSeries = ohlcPlot.ohlc(closeMapping).name("ORACLE Intraday");
-        ohlcPlot.grid().enabled(true);
-        ohlcPlot.minorGrid().enabled(true);
+        ohlcPlot.yGrid(true);
+        ohlcPlot.xMinorGrid(true);
         ohlcPlot.legend().itemsFormat(function () {
             return 'O: ' + anychart.format.number(this.open, locale) + '; ' +
                 'H: ' + anychart.format.number(this.high, locale) + '; ' +
