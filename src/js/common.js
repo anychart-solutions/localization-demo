@@ -127,7 +127,9 @@
             code_func + '\n\t\t});';
         var doc = '<!DOCTYPE html>\n<html lang="en">\n<head>' +
             '\n\t<meta charset="utf-8" />' +
-            '\n\t<script src="https://cdn.anychart.com/js/7.14.3/anychart-bundle.min.js"></script>' +
+            '\n\t<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>' +
+            '\n\t<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>' +
+            '\n\t<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>' +
             '\n\t<script src="' + 'https://cdn.anychart.com/locale/1.1.0/' + locale + '.js"></script>' +
             '\n</head>\n<body>' +
             '\n\t<div id="container" style="width: 850px; height: 600px; margin: 0 auto;"></div>' +
@@ -226,7 +228,7 @@
             ['2015-12', 29, 39, 71]
         ];
 
-        var _title = 'ACME corp. Problems During the Year\n' + 'From: ' +
+        var title = 'ACME corp. Problems During the Year\n' + 'From: ' +
             anychart.format.dateTime(data[0][0], format, timeZoneOffset, locale) +
             '\nTo: ' + anychart.format.dateTime(data[data.length - 1][0], format, timeZoneOffset, locale);
 
@@ -253,9 +255,9 @@
             .xLabel(false)
             .yStroke(null);
         // disable one of the chart grids
-        chart.grid(0).enabled(false);
+        chart.yGrid(0).enabled(false);
         // set chart title text settings
-        chart.title(_title).padding([20, 0, 10, 0]);
+        chart.title(title).padding([20, 0, 10, 0]);
         // set yAxis title
         chart.yAxis().title('Occurences per month');
 
@@ -265,7 +267,9 @@
          */
         var seriesConfiguration = function (series, name) {
             series.name(name);
-            series.hoverMarkers().enabled(true).size(4);
+            series.hovered().markers()
+                .enabled(true)
+                .size(4);
         };
 
         // temp variable to store series instance
