@@ -22,6 +22,12 @@ To run demo development environment, please, ensure you have installed [Git](htt
 * To install gulp globally using `npm install gulp -g` command.
 * To install git, visit [installation instructions](https://git-scm.com/book/en/v1/Getting-Started-Installing-Git) page.
 
+## Run the demo
+* Clone this demo from [GitHub](https://github.com/anychart-solutions/localization-demo).
+* Install all dependencies with `npm install` command from the root directory.
+* Compile all with `gulp` command from the root directory.
+* Open `index.html` file.
+
 ## Links
 * [Localization and Date-Time Formatting Utility at AnyChart.Com](https://www.anychart.com/products/anychart/demos/localization/)
 * [Documentation](https://docs.anychart.com)
