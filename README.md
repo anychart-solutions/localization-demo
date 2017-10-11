@@ -23,7 +23,7 @@ To run demo development environment, please, ensure you have installed [Git](htt
 * To install git, visit [installation instructions](https://git-scm.com/book/en/v1/Getting-Started-Installing-Git) page.
 
 ## Run the demo
-* Clone this demo from [GitHub](https://github.com/anychart-solutions/web-audience-dashboard).
+* Clone this demo from [GitHub](https://github.com/anychart-solutions/localization-demo).
 * Install all dependencies with `npm install` command from the root directory.
 * Compile all with `gulp` command from the root directory.
 * Open `index.html` file.
