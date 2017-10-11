@@ -30,9 +30,6 @@ To run demo development environment, please, ensure you have installed [Git](htt
 * [Technical Support](https://www.anychart.com/support)
 
 ## License
-[© AnyChart.com - JavaScript charts](http://www.anychart.com). Released under the [Apache 2.0 License](https://github.com/anychart-solutions/localization-demo/blob/anygantt/LICENSE).
-
-## License
 AnyChart Localization and Date-Time Formatting Utility includes two parts:
 - code of the solution sample that allows to use Javascript library (in this case, AnyChart). You can use, edit, modify it, use it with other Javascript libraries without any restrictions. It is released under [Apache 2.0 License](https://github.com/anychart-solutions/localization-demo/blob/master/LICENSE).
 - AnyChart JavaScript library. It is released under Commercial license. You can test this plugin with the trial version of AnyChart. Our trial version is not limited by time and doesn't contain any feature limitations. Check details [here](https://www.anychart.com/buy/)
