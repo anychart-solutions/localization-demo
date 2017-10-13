@@ -4,6 +4,8 @@
 Localization and Date-Time Formatting Utility demonstrates all the functionality necessary for formatting date-time data.
 It is an irreplaceable tool for a developer; it provides all the country and language-dependent date-time settings, plus allows choosing preset date-time formatting patterns or creating your own ones - with ease.
 
+[anychart](https://github.com/anychart-solutions/localization-demo/tree/anychart), [anystock](https://github.com/anychart-solutions/localization-demo/tree/anystock), [anygantt](https://github.com/anychart-solutions/localization-demo/tree/anygantt), and [anymap](https://github.com/anychart-solutions/localization-demo/tree/anymap) branches contain product-specific versions of the demo. After you clone this repository use `git checkout` command to switch to a branch and work with the product-specific version.
+
 ## AnyStock
 [<img src="https://static.anychart.com/images/github/anystock-localization.png?1" alt="AnyStock Localization and Date-Time Formatting Utility">](http://anychart.com/products/anystock/demos/localization/)
 
