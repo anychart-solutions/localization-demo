@@ -271,6 +271,12 @@
         volumeSeries.tooltip().format(function () {
             return 'Volume: ' + anychart.format.number(this.value, locale);
         });
+        volumePlot.yAxis().labels().format('${%Value}{scale:(1000000)(1)|( mln)}');
+
+        // chart crosshair settings
+        chart.crosshair()
+            .yStroke(false)
+            .yLabel(false);
 
         // create scroller series with mapped data
         chart.scroller().line(closeMapping);
