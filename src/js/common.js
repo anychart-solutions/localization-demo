@@ -235,6 +235,9 @@
         // get chart data grid link to set column settings
         var dataGrid = chart.dataGrid();
         dataGrid.column(0).enabled(false);
+        dataGrid.tooltip()
+            .allowLeaveChart(true)
+            .allowLeaveStage(false);
 
         // set first column settings
         var firstColumn = dataGrid.column(1);
