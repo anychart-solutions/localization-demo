@@ -129,11 +129,12 @@
             code_func + '\n\t\t});';
         var doc = '<!DOCTYPE html>\n<html lang="en">\n<head>' +
             '\n\t<meta charset="utf-8" />' +
-            '\n\t<link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css">' +
-            '\n\t<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>' +
-            '\n\t<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-gantt.min.js"></script>' +
-            '\n\t<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>' +
-            '\n\t<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>' +
+            '\n\t<link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css">' +
+            '\n\t<link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart.min.css">' +
+            '\n\t<script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>' +
+            '\n\t<script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-gantt.min.js"></script>' +
+            '\n\t<script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>' +
+            '\n\t<script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>' +
             '\n\t<script src="' + 'https://cdn.anychart.com/locale/1.1.0/' + locale + '.js"></script>' +
             '\n\t<script src="https://anychart.com/products/anygantt/demos/localization/repo/data.js"></script>' +
             '\n</head>\n<body>' +
