@@ -128,7 +128,7 @@
         var doc = '<!DOCTYPE html>\n<html lang="en">\n<head>' +
             '\n\t<meta charset="utf-8" />' +
             '\n\t<link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css">' +
-            '\n\t<link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart.min.css">' +
+            '\n\t<link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css">' +
             '\n\t<script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>' +
             '\n\t<script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>' +
             '\n\t<script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>' +
